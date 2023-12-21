@@ -1,9 +1,13 @@
-import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { SigninScreen } from './modules';
+import { RootStack } from './navigation';
 
 const App = () => {
-  return <SigninScreen />;
+  return (
+    <NavigationContainer>
+      <RootStack />
+    </NavigationContainer>
+  );
 };
 
 export default App;
