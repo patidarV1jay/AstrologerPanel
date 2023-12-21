@@ -3,9 +3,10 @@ import React from 'react';
 import {
   Image,
   Keyboard,
+  Pressable,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from 'react-native';
 import { Images } from '../../../assets';
 import { CustomTextInput } from '../../../components';
@@ -15,7 +16,7 @@ import styles from './SigninScreenStyles';
 import useSigninScreen from './useSigninScreen';
 
 const SigninScreen = () => {
-  const { formik } = useSigninScreen();
+  const { formik, navigateSignup } = useSigninScreen();
   const { refInput1, focusNextTextInput } = useInputRef();
   return (
     <View style={styles.container}>
@@ -45,10 +46,12 @@ const SigninScreen = () => {
         <TouchableOpacity style={styles.blueButton}>
           <Text style={styles.loginText}>{ScreenString.login}</Text>
         </TouchableOpacity>
-        <Text style={styles.newUserText}>
-          {ScreenString.newUser}
-          <Text style={styles.registerText}>{ScreenString.register}</Text>
-        </Text>
+        <Pressable onPress={navigateSignup}>
+          <Text style={styles.newUserText}>
+            {ScreenString.newUser}
+            <Text style={styles.registerText}>{ScreenString.register}</Text>
+          </Text>
+        </Pressable>
       </View>
     </View>
   );
