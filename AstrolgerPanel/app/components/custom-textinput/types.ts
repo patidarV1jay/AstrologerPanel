@@ -4,6 +4,7 @@ import {
   TextStyle,
   TextInput,
   ReturnKeyTypeOptions,
+  KeyboardTypeOptions,
 } from 'react-native';
 
 export interface FormikProps {
@@ -23,10 +24,11 @@ export interface IconComponentProps {
 export interface Props {
   placeholder: string;
   name: string;
-  Icon: ComponentType<IconComponentProps>;
+  Icon?: ComponentType<IconComponentProps>;
   formik: FormikProps;
   secureTextEntry: boolean;
   onSubmitEditing?: () => void;
   inputRef?: MutableRefObject<TextInput | null>;
   returnKeyType?: ReturnKeyTypeOptions;
+  keyboardType?: KeyboardTypeOptions;
 }
