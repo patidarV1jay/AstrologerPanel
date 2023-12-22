@@ -12,12 +12,13 @@ const CustomTextInput = ({
   inputRef,
   onSubmitEditing,
   returnKeyType,
+  keyboardType,
 }: Props) => {
   const { handleBlur, handleChange, values, touched, errors } = formik;
   return (
     <View style={styles.container}>
       <View style={styles.textInputView}>
-        <Icon size={moderateScale(25)} color={Colors.dark} />
+        {Icon && <Icon size={moderateScale(25)} color={Colors.dark} />}
         <TextInput
           ref={inputRef}
           placeholder={placeholder}
@@ -30,6 +31,7 @@ const CustomTextInput = ({
           secureTextEntry={secureTextEntry}
           onSubmitEditing={onSubmitEditing}
           returnKeyType={returnKeyType}
+          keyboardType={keyboardType}
         />
       </View>
       <View style={styles.errorView}>
