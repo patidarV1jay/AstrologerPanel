@@ -1,5 +1,7 @@
 export enum Routes {
-    Signin = "Signin",
-    Signup = "Signup",
-    AuthStack = "AuthStack"
+  Signin = 'Signin',
+  Signup = 'Signup',
+  AuthStack = 'AuthStack',
+  HomeScreen = 'HomeScreen',
+  HomeStack = 'HomeStack',
 }

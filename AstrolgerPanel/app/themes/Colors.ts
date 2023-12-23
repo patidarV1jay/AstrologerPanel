@@ -12,4 +12,5 @@ export default {
   textColor: '#4CACBC',
   offShade: '#C2C4C6',
   green: '#006600',
+  orange: '#FFA500',
 };
