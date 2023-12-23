@@ -19,9 +19,14 @@ const useSigninScreen = () => {
     onSubmit: () => {},
   });
 
+  const navigateHomePage = () => {
+    navigation.navigate(Routes.HomeStack, { screen: Routes.HomeScreen });
+  };
+
   return {
     formik,
-    navigateSignup
+    navigateSignup,
+    navigateHomePage,
   };
 };
 

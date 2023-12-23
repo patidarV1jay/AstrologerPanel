@@ -17,6 +17,12 @@ export const ScreenString = {
   sendRequest: 'Send Request',
   alreadyHaveAccount: 'Already have an Account?',
   check: 'By checking, I Agree to',
+  lekhaJhoka: 'Lekha Jhoka',
+  divineWelcome: 'Divine Welcome,',
+  wishToGetBirthDetails:
+    'Wish to get birth detail and birth chat during ongoing call, click below.',
+  getBirthDetails: 'Get Birth Details',
+  boostProfile:"Boost My Profile"
 };
 
 export const ValidationStrings = {
