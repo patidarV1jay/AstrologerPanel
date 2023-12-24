@@ -3,9 +3,13 @@ export default {
   avatar: require('./avatar.png'),
   banner: require('./banne.jpg'),
   call: require("./call.png"),
-  cut: require('./cut.png'),
-  article: require('./Article.png'),
-  live: require('./live.png'),
-  report: require('./Report.png'),
-  setRate: require("./setRate.png")
+  setRate: require("./setRate.png"),
+  applyLeave: require("./applyLeave.png"),
+  articles: require("./articles.png"),
+  goLive: require("./goLive.png"),
+  loginHours: require("./loginHours.png"),
+  otherEarnings: require("./otherEarnings.png"),
+  payReport : require("./paymentReport.png"),
+  shortcut: require("./shortcuts.png"),
+  support: require("./support.png")
 };
