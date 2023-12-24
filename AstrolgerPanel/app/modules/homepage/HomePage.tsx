@@ -1,19 +1,18 @@
 import React from 'react';
 import {
-  FlatList,
   Image,
   Pressable,
   ScrollView,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native';
 import { Images } from '../../assets';
-import { IconList, ScreenString } from '../../constants';
-import { Colors, moderateScale, verticleScale } from '../../themes';
+import { ScreenString } from '../../constants';
+import { Colors, verticleScale } from '../../themes';
 import styles from './HomePageStyles';
-import useHomePage from './useHomePage';
 import TermsModal from './TermsModal';
+import useHomePage from './useHomePage';
 
 const HomePage = () => {
   const {
