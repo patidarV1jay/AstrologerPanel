@@ -25,7 +25,6 @@ const HomePage = () => {
     operation,
   } = useHomePage();
 
-  console.log(slider.chat);
   return (
     <View style={styles.container}>
       <View style={styles.orangeContainer} />

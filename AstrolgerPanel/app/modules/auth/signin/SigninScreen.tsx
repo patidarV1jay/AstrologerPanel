@@ -16,7 +16,8 @@ import styles from './SigninScreenStyles';
 import useSigninScreen from './useSigninScreen';
 
 const SigninScreen = () => {
-  const { formik, navigateSignup, navigateHomePage } = useSigninScreen();
+  const { formik, navigateSignup } = useSigninScreen();
+  const { handleSubmit } = formik;
   const { refInput1, focusNextTextInput } = useInputRef();
   return (
     <View style={styles.container}>
@@ -43,7 +44,9 @@ const SigninScreen = () => {
           onSubmitEditing={() => Keyboard.dismiss}
         />
         <Text style={styles.alignRightText}>{ScreenString.forgotPassword}</Text>
-        <TouchableOpacity style={styles.blueButton} onPress={navigateHomePage}>
+        <TouchableOpacity
+          style={styles.blueButton}
+          onPress={() => handleSubmit()}>
           <Text style={styles.loginText}>{ScreenString.login}</Text>
         </TouchableOpacity>
         <Pressable onPress={navigateSignup}>

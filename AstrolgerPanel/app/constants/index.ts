@@ -3,4 +3,5 @@ export * from './Strings';
 export * from './RegEx';
 export { Routes } from './NavigationRoutes';
 export * from './data';
-export {default as IconList} from './IconList'
+export { default as IconList } from './IconList';
+export { default as SliceConstants } from './SliceConstants';
