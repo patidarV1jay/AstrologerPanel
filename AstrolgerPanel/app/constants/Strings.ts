@@ -22,7 +22,11 @@ export const ScreenString = {
   wishToGetBirthDetails:
     'Wish to get birth detail and birth chat during ongoing call, click below.',
   getBirthDetails: 'Get Birth Details',
-  boostProfile:"Boost My Profile"
+  boostProfile: 'Boost My Profile',
+  updateProfile: 'Update Profile',
+  category: 'Category',
+  selectedCategories: 'Selected Categories',
+  update: 'Update',
 };
 
 export const ValidationStrings = {
