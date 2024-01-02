@@ -4,6 +4,7 @@ import { ParamListBase, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { login, useAppDispatch, useAppSelector } from '../../../redux';
 import { useEffect } from 'react';
+import { authUser } from '../../../redux';
 
 const useSigninScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
@@ -25,7 +26,8 @@ const useSigninScreen = () => {
       email: '',
       password: '',
     },
-    onSubmit: () => {
+    onSubmit: values => {
+      // dispatch(authUser(values));
       dispatch(login());
     },
   });

@@ -28,6 +28,8 @@ export const ScreenString = {
   selectedCategories: 'Selected Categories',
   update: 'Update',
   dailyCredit: 'Daily Credits',
+  callDetais: 'Call Details',
+  details: ' Search Details',
 };
 
 export const ValidationStrings = {
