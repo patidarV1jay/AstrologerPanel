@@ -300,3 +300,42 @@ export const Language: DeviceType[] = [
     device: 'Japanese',
   },
 ];
+
+export const Categories = [
+  {
+    id: 1,
+    category: 'Love',
+  },
+  {
+    id: 2,
+    category: 'Career',
+  },
+  {
+    id: 3,
+    category: 'Marriage',
+  },
+  {
+    id: 4,
+    category: 'Health',
+  },
+  {
+    id: 5,
+    category: 'Finance',
+  },
+  {
+    id: 6,
+    category: 'Education',
+  },
+  {
+    id: 7,
+    category: 'Pregnancy',
+  },
+  {
+    id: 8,
+    category: 'Legal',
+  },
+  {
+    id: 9,
+    category: 'Business',
+  },
+];

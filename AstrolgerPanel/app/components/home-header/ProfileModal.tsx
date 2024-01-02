@@ -1,7 +1,6 @@
 import React, { Dispatch, FC, SetStateAction } from 'react';
 import { Modal, Text, TouchableWithoutFeedback, View } from 'react-native';
 import styles from './HomeHeaderStyles';
-import { useAppDispatch } from '../../redux';
 import useHomeHeader from './useHomeHeader';
 
 interface Props {
@@ -9,7 +8,7 @@ interface Props {
   setIsModalVisible: Dispatch<SetStateAction<boolean>>;
 }
 const ProfileModal: FC<Props> = ({ isModalVisible, setIsModalVisible }) => {
-  const { signOut } = useHomeHeader();
+  const { signOut, navigateToUpdateProfile } = useHomeHeader();
   return (
     <Modal transparent visible={isModalVisible} animationType="fade">
       <View style={{ flex: 1 }}>
@@ -22,7 +21,7 @@ const ProfileModal: FC<Props> = ({ isModalVisible, setIsModalVisible }) => {
             <TouchableWithoutFeedback>
               <Text style={styles.text}>Share Profile</Text>
             </TouchableWithoutFeedback>
-            <Text style={styles.text}>Update Profile</Text>
+            <Text style={styles.text} onPress={navigateToUpdateProfile}>Update Profile</Text>
             <TouchableWithoutFeedback>
               <Text style={styles.text} onPress={signOut}>
                 Signout

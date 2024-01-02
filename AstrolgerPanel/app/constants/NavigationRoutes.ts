@@ -4,4 +4,5 @@ export enum Routes {
   AuthStack = 'AuthStack',
   HomeScreen = 'HomeScreen',
   HomeStack = 'HomeStack',
+  UpdateProfile = "UpdateProfile"
 }
