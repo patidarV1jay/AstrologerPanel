@@ -4,8 +4,10 @@ import { HomePage } from '../modules';
 import { HomeHeader } from '../components';
 import { UpdateProfile } from '../modules';
 import { SecondaryHeader } from '../components';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 const StackHome = createNativeStackNavigator();
+const Drawer = createDrawerNavigator()
 
 const HomeStack = () => {
   return (

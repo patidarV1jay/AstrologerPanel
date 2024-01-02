@@ -27,6 +27,7 @@ export const ScreenString = {
   category: 'Category',
   selectedCategories: 'Selected Categories',
   update: 'Update',
+  dailyCredit: 'Daily Credits',
 };
 
 export const ValidationStrings = {
