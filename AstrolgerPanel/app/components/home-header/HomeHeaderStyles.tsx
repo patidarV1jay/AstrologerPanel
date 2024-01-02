@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginVertical: verticleScale(8),
+    marginVertical: verticleScale(15),
   },
   bellnDots: {
     flexDirection: 'row',
@@ -51,6 +51,26 @@ const styles = StyleSheet.create({
     color: Colors.dark,
     padding: moderateScale(10),
     fontSize: moderateScale(15),
+  },
+  dailyCreditText: {
+    fontWeight: '500',
+    color: Colors.light,
+    fontSize: moderateScale(18),
+  },
+  creditContainer: {
+    marginHorizontal: horizontalScale(10),
+    marginTop: verticleScale(15),
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  rupeesText: {
+    fontWeight: '500',
+    fontSize: moderateScale(18),
+    marginLeft: horizontalScale(14),
+    color: Colors.light,
+  },
+  row: {
+    flexDirection: 'row',
   },
 });
 

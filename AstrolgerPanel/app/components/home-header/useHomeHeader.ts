@@ -1,35 +1,24 @@
-import { useEffect, useState } from 'react';
-import { logOut, useAppDispatch, useAppSelector } from '../../redux';
-import { CommonActions, ParamListBase } from '@react-navigation/native';
+import { DrawerNavigationProp } from '@react-navigation/drawer';
+import { ParamListBase, useNavigation } from '@react-navigation/native';
+import { useState } from 'react';
 import { Routes } from '../../constants';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useAppDispatch } from '../../redux';
 
 const useHomeHeader = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+  const navigation = useNavigation<DrawerNavigationProp<ParamListBase>>();
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const dispatch = useAppDispatch();
-  const { isSuccess } = useAppSelector(state => state.signin);
-  useEffect(() => {}, [isSuccess]);
-
-  const signOut = () => {
-    const resetAction = CommonActions.reset({
-      index: 0,
-      routes: [{ name: Routes.AuthStack }],
-    });
-    navigation.dispatch(resetAction);
-    dispatch(logOut());
-  };
 
   const navigateToUpdateProfile = () => {
-    navigation.navigate(Routes.UpdateProfile)
+    navigation.navigate(Routes.UpdateProfile);
   };
   return {
     isModalVisible,
     setIsModalVisible,
     dispatch,
-    signOut,
+
     navigateToUpdateProfile,
+    navigation,
   };
 };
 

@@ -5,7 +5,7 @@ import {
   ScrollView,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from 'react-native';
 import { Images } from '../../assets';
 import { ScreenString } from '../../constants';
@@ -36,15 +36,6 @@ const HomePage = () => {
           <Image style={styles.banner} source={Images.banner} />
         </View>
 
-        <View style={styles.profileView}>
-          <Image style={styles.avatar} source={Images.avatar} />
-          <View>
-            <Text style={styles.name}>Aacharya Hardeep</Text>
-            <Text style={styles.text}>hardeepsaini78@gmail.com</Text>
-            <Text style={styles.text}>ID: 4579</Text>
-            <Text style={styles.text}>Followers: 32</Text>
-          </View>
-        </View>
         <View style={styles.statusContainer}>
           <View style={styles.statusContent}>
             <Text style={styles.availabilityStatusText}>
@@ -84,7 +75,7 @@ const HomePage = () => {
               </View>
             </Pressable>
           </View>
-          <View style={[styles.statusContent, styles.bottomSpace]}>
+          <View style={styles.statusContent}>
             <Text style={styles.availabilityStatusText}>
               Unavailable for Video Call
             </Text>
@@ -105,6 +96,27 @@ const HomePage = () => {
               </View>
             </Pressable>
           </View>
+          <View style={[styles.statusContent, styles.bottomSpace]}>
+            <Text style={styles.availabilityStatusText}>
+              Unlimited free call and chats
+            </Text>
+            <Pressable
+              onPress={
+                slider.freeChat
+                  ? () => setSlider({ ...slider, freeChat: false })
+                  : () => toggleVisibility('freeChat')
+              }>
+              <View
+                style={
+                  slider.freeChat ? styles.buttonFillOrange : styles.button
+                }>
+                <View
+                  style={
+                    slider.freeChat ? styles.circleFill : styles.circle
+                  }></View>
+              </View>
+            </Pressable>
+          </View>
         </View>
         <View style={[styles.statusContainer, styles.getDetailsContainer]}>
           <Text style={styles.wishToGetText}>
@@ -116,51 +128,30 @@ const HomePage = () => {
             </Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.freeVoiceChatContainer}>
-          <Text style={styles.availabilityStatusText}>
-            Unlimited free calls and chats
-          </Text>
-          <Pressable
-            onPress={
-              slider.freeChat
-                ? () => setSlider({ ...slider, freeChat: false })
-                : () => toggleVisibility('freeChat')
-            }>
-            <View
-              style={slider.freeChat ? styles.buttonFillOrange : styles.button}>
-              <View
-                style={
-                  slider.freeChat ? styles.circleFill : styles.circle
-                }></View>
-            </View>
-          </Pressable>
-        </View>
-        <TouchableOpacity style={styles.boostProfileButton}>
+        {/* <TouchableOpacity style={styles.boostProfileButton}>
           <Text style={styles.birthDetailsText}>
             {ScreenString.boostProfile}
           </Text>
-        </TouchableOpacity>
-        {/* <View style={styles.statusContainer}>
-          <FlatList
-            data={IconList}
-            renderItem={({ item }) => {
-              return (
-                <View>
-                  <Image
-                    source={item.source}
-                    style={{
-                      width: moderateScale(170),
-                      height: moderateScale(360),
-                    }}
-                  />
-                  <Text style={{ color: 'black' }}>{item.title}</Text>
-                </View>
-              );
-            }}
-            scrollEnabled={false}
-          />
-        </View> */}
-        
+        </TouchableOpacity> */}
+        {/* <FlatList
+          data={IconList}
+          renderItem={({ item }) => {
+            return (
+              <View>
+                <Image
+                  source={item.source
+                  style={{
+                    width: horizontalScale(120),
+                    height: verticleScale(400),
+                  }}
+                />
+              </View>
+            );
+          }}
+          scrollEnabled={false}
+          numColumns={3}
+          key={3}
+        /> */}
       </ScrollView>
       <View
         style={{
