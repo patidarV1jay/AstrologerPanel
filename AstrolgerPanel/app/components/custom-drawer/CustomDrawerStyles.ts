@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.orange,
     marginTop: verticleScale(-10),
     flex: 1,
+    marginBottom: verticleScale(10),
   },
   drawerContent: {
     alignItems: 'center',
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
   signOutView: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: moderateScale(8)
+    padding: moderateScale(8),
   },
   signOutText: {
     fontWeight: '500',
@@ -55,6 +56,11 @@ const styles = StyleSheet.create({
     bottom: 0,
     backgroundColor: Colors.orange,
     width: '100%',
+  },
+  label: {
+    fontWeight: '400',
+    color: Colors.dark,
+    fontSize: moderateScale(16),
   },
 });
 

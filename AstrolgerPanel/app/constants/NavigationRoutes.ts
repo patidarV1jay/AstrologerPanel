@@ -4,5 +4,11 @@ export enum Routes {
   AuthStack = 'AuthStack',
   HomeScreen = 'HomeScreen',
   HomeStack = 'HomeStack',
-  UpdateProfile = "UpdateProfile"
+  UpdateProfile = 'UpdateProfile',
+  CallDetails = 'Call Details',
+  SetRate = 'Set Rate',
+  MyPerformance = 'My Peformance',
+  PayReport = 'Payment Report',
+  Articles = 'Articles',
+  Leave = 'Apply Leave',
 }

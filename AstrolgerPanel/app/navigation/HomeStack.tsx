@@ -1,13 +1,11 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Routes, ScreenString } from '../constants';
-import { HomePage } from '../modules';
-import { HomeHeader } from '../components';
-import { UpdateProfile } from '../modules';
-import { SecondaryHeader } from '../components';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { HomeHeader, SecondaryHeader } from '../components';
+import { Routes, ScreenString } from '../constants';
+import { CallDetails, HomePage, UpdateProfile } from '../modules';
 
 const StackHome = createNativeStackNavigator();
-const Drawer = createDrawerNavigator()
+const Drawer = createDrawerNavigator();
 
 const HomeStack = () => {
   return (
@@ -20,7 +18,16 @@ const HomeStack = () => {
       <StackHome.Screen
         name={Routes.UpdateProfile}
         component={UpdateProfile}
-        options={{ header: () => <SecondaryHeader title={ScreenString.updateProfile}/> }}
+        options={{
+          header: () => <SecondaryHeader title={ScreenString.updateProfile} />,
+        }}
+      />
+      <StackHome.Screen
+        name={Routes.CallDetails}
+        component={CallDetails}
+        options={{
+          header: () => <SecondaryHeader title={ScreenString.callDetais} />,
+        }}
       />
     </StackHome.Navigator>
   );

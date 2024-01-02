@@ -1,5 +1,15 @@
-import { DrawerContentScrollView } from '@react-navigation/drawer';
-import { SignOut } from 'phosphor-react-native';
+import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
+import {
+  Article,
+  Book,
+  ChartBar,
+  ChartLineUp,
+  CurrencyInr,
+  Envelope,
+  Notebook,
+  Phone,
+  SignOut,
+} from 'phosphor-react-native';
 import React from 'react';
 import {
   Image,
@@ -10,9 +20,10 @@ import {
   View,
 } from 'react-native';
 import { Images } from '../../assets';
+import { Routes } from '../../constants';
+import { Colors, moderateScale } from '../../themes';
 import styles from './CustomDrawerStyles';
 import useCustomDrawer from './useCustomDrawer';
-import { Colors } from '../../themes';
 
 const CustomDrawer = (
   props: React.JSX.IntrinsicAttributes &
@@ -39,6 +50,50 @@ const CustomDrawer = (
             </View>
           </View>
         </View>
+        <DrawerItem
+          focused={Routes.CallDetails === 'Call Details'}
+          label={Routes.CallDetails}
+          onPress={() => navigation.navigate(Routes.CallDetails)}
+          labelStyle={styles.label}
+          icon={({ focused }) => (
+            <Phone size={moderateScale(28)} weight="bold" />
+          )}
+        />
+        <DrawerItem
+          focused={Routes.SetRate === 'Set Rate'}
+          label={Routes.SetRate}
+          onPress={() => navigation.navigate(Routes.CallDetails)}
+          labelStyle={styles.label}
+          icon={({}) => <CurrencyInr size={moderateScale(28)} weight="bold" />}
+        />
+        <DrawerItem
+          focused
+          label={Routes.MyPerformance}
+          onPress={() => navigation.navigate(Routes.MyPerformance)}
+          labelStyle={styles.label}
+          icon={({}) => <ChartLineUp size={moderateScale(28)} weight="bold" />}
+        />
+        <DrawerItem
+          focused
+          label={Routes.PayReport}
+          onPress={() => navigation.navigate(Routes.MyPerformance)}
+          labelStyle={styles.label}
+          icon={({}) => <Article size={moderateScale(28)} weight="bold" />}
+        />
+        <DrawerItem
+          focused
+          label={Routes.Articles}
+          onPress={() => navigation.navigate(Routes.MyPerformance)}
+          labelStyle={styles.label}
+          icon={({}) => <Notebook size={moderateScale(28)} weight="bold" />}
+        />
+        <DrawerItem
+          focused
+          label={Routes.Leave}
+          onPress={() => navigation.navigate(Routes.MyPerformance)}
+          labelStyle={styles.label}
+          icon={({}) => <Envelope size={moderateScale(28)} weight="bold" />}
+        />
       </DrawerContentScrollView>
       <Pressable style={styles.footer} onPress={signOut}>
         <View style={styles.signOutView}>
