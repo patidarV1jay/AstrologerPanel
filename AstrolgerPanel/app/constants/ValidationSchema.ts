@@ -25,8 +25,20 @@ export const SignupSchema = Yup.object().shape({
   experience: Yup.number()
     .typeError(ValidationStrings.invalidExperience)
     .required(ValidationStrings.required)
-    .min(0, ValidationStrings.negativeAmount),
+    .min(0, ValidationStrings.negativeExperience),
   city: Yup.string().required(ValidationStrings.required),
   country: Yup.string().required(ValidationStrings.required),
   bio: Yup.string().required(ValidationStrings.required),
+});
+
+export const RateSchmea = Yup.object().shape({
+  rate: Yup.number()
+    .typeError(ValidationStrings.invalidAmount)
+    .required(ValidationStrings.required)
+    .min(0, ValidationStrings.negativeRate),
+  discount: Yup.number()
+    .typeError(ValidationStrings.invalidExperience)
+    .required(ValidationStrings.required)
+    .min(0, ValidationStrings.negativeRate)
+    .max(100, ValidationStrings.range)
 });
