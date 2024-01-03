@@ -8,6 +8,7 @@ import {
   HomePage,
   UpdateProfile,
   SetRate,
+  ApplyLeave,
 } from '../modules';
 
 const StackHome = createNativeStackNavigator();
@@ -47,6 +48,13 @@ const HomeStack = () => {
         component={SetRate}
         options={{
           header: () => <SecondaryHeader title={Routes.SetRate} />,
+        }}
+      />
+      <StackHome.Screen
+        name={Routes.Leave}
+        component={ApplyLeave}
+        options={{
+          header: () => <SecondaryHeader title={Routes.Leave} />,
         }}
       />
     </StackHome.Navigator>

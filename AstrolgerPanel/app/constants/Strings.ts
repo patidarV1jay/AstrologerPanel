@@ -38,6 +38,11 @@ export const ScreenString = {
   rateText: 'Rate(Rs/min)',
   discount: 'Discount ( % )',
   discountedRate: 'Discounted Rate(Rs/min)',
+  iWillbeOnleave: 'I will be on leave for',
+  days: 'day(s)',
+  selectValidDate: 'Select Valid Dates.',
+  applyForLeave: "Apply For Leave",
+  enterReason:'Please Enter a Valid Reason.'
 };
 
 export const ValidationStrings = {
@@ -54,4 +59,8 @@ export const ValidationStrings = {
   invalidAmount: 'Please enter a valid amount.',
   negativeRate: "Amount can't be negative.",
   range: 'Enter between 0 to 100.',
+};
+
+export const PlaceholderStrings = {
+  reasonForLeave: 'Specify the reason for leave(s)....',
 };

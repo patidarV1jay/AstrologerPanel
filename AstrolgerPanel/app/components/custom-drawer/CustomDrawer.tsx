@@ -90,7 +90,7 @@ const CustomDrawer = (
         <DrawerItem
           focused
           label={Routes.Leave}
-          onPress={() => navigation.navigate(Routes.MyPerformance)}
+          onPress={() => navigation.navigate(Routes.Leave)}
           labelStyle={styles.label}
           icon={({}) => <Envelope size={moderateScale(28)} weight="bold" />}
         />
