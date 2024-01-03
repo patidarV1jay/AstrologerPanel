@@ -11,12 +11,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#80808080',
   },
-  modalContentContainer:{
-     backgroundColor:Colors.light,
-     width: '80%',
-     height: '45%',
-     alignSelf:'center',
-     borderRadius: moderateScale(10)
+  modalContentContainer: {
+    backgroundColor: Colors.light,
+    width: '80%',
+    height: '45%',
+    alignSelf: 'center',
+    borderRadius: moderateScale(10),
   },
   container: {
     flex: 1,
@@ -157,22 +157,61 @@ const styles = StyleSheet.create({
   getDetailsContainer: {
     paddingVertical: verticleScale(25),
   },
-  freeVoiceChatContainer: {
+  amountText: {
+    fontWeight: 'bold',
+    fontSize: moderateScale(18),
+    marginLeft: verticleScale(20),
+    color: Colors.dark,
+  },
+  creditText: {
+    fontWeight: '500',
+    fontSize: moderateScale(18),
+    color: Colors.dark,
+  },
+  footer: {
+    backgroundColor: Colors.orange,
+    padding: 10,
+    position: 'absolute',
+    bottom: 0,
+    flex: 1,
+    width: '100%',
+    elevation: 20,
+    shadowColor: Colors.gray,
     flexDirection: 'row',
-    marginTop: verticleScale(25),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  goLiveText: {
+    fontWeight: 'bold',
+    fontSize: moderateScale(18),
+    color: Colors.light,
+    marginLeft: horizontalScale(10),
+  },
+  dailyIncome: {
+    flexDirection: 'row',
+    backgroundColor: Colors.light,
+    justifyContent: 'center',
+    elevation: 3,
+    shadowColor: Colors.offShade,
+    padding: moderateScale(10),
     marginHorizontal: horizontalScale(4),
+  },
+  totalEarningsView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: horizontalScale(10),
+    alignItems: 'center',
     borderWidth: 1,
     borderColor: Colors.offShade,
-    borderRadius: moderateScale(5),
-    paddingHorizontal: horizontalScale(14),
-    paddingVertical: verticleScale(30),
-    justifyContent: 'space-between',
-  },
-  boostProfileButton: {
-    backgroundColor: Colors.cornFlowerBlue,
-    borderRadius: moderateScale(10),
-    marginTop: verticleScale(25),
     marginHorizontal: horizontalScale(4),
+    borderRadius: moderateScale(5),
+    marginTop: verticleScale(25),
+  },
+  totalEarningText: {
+    fontWeight: '500',
+    color: Colors.dark,
+    padding: moderateScale(10),
+    fontSize: moderateScale(18),
   },
 });
 

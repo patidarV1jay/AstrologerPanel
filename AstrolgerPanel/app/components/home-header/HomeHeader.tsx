@@ -1,14 +1,24 @@
-import { Bell, DotsThreeVertical, List } from 'phosphor-react-native';
+import {
+  Bell,
+  CaretRight,
+  DotsThreeVertical,
+  List,
+} from 'phosphor-react-native';
 import React from 'react';
 import { Pressable, StatusBar, Text, View } from 'react-native';
 import { ScreenString } from '../../constants';
-import { Colors, moderateScale } from '../../themes';
+import { Colors, horizontalScale, moderateScale } from '../../themes';
 import styles from './HomeHeaderStyles';
 import ProfileModal from './ProfileModal';
 import useHomeHeader from './useHomeHeader';
 
 const HomeHeader = () => {
-  const { isModalVisible, setIsModalVisible, navigation } = useHomeHeader();
+  const {
+    isModalVisible,
+    setIsModalVisible,
+    navigation,
+    navigateToEarningDetails,
+  } = useHomeHeader();
   return (
     <>
       <StatusBar backgroundColor={Colors.orange} barStyle="dark-content" />
@@ -38,10 +48,41 @@ const HomeHeader = () => {
             </Pressable>
           </View>
         </View>
-        {/* <View style={styles.creditContainer}>
-          <Text style={styles.dailyCreditText}>{ScreenString.dailyCredit}</Text>
-          <Text style={styles.rupeesText}>₹ 800.00</Text>
-        </View> */}
+        <View style={styles.lightContainer}>
+          <View style={styles.incomeContainer}>
+            <View>
+              <Text style={styles.amountText}>₹ 2000</Text>
+              <Text style={styles.dayIncomeText}>Today's In</Text>
+            </View>
+            <View style={styles.vrLine} />
+          </View>
+          <View style={styles.incomeContainer}>
+            <View>
+              <Text style={styles.amountText}>₹ 2000</Text>
+              <Text style={styles.dayIncomeText}>Total In</Text>
+            </View>
+            <View
+              style={{
+                borderLeftWidth: 1,
+                borderColor: Colors.offShade,
+                marginRight: horizontalScale(10),
+              }}
+            />
+          </View>
+          <Pressable
+            style={styles.viewMoreContainer}
+            onPress={navigateToEarningDetails}>
+            <View>
+              <Text style={styles.view}>View</Text>
+              <Text style={styles.view}>More</Text>
+            </View>
+            <CaretRight
+              size={moderateScale(22)}
+              weight="bold"
+              color={Colors.orange}
+            />
+          </Pressable>
+        </View>
       </View>
       <ProfileModal
         isModalVisible={isModalVisible}

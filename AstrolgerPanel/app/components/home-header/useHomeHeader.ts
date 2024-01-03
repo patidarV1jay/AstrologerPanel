@@ -12,13 +12,17 @@ const useHomeHeader = () => {
   const navigateToUpdateProfile = () => {
     navigation.navigate(Routes.UpdateProfile);
   };
+
+  const navigateToEarningDetails = () => {
+    navigation.navigate(Routes.EarningDetails);
+  };
   return {
     isModalVisible,
     setIsModalVisible,
     dispatch,
-
     navigateToUpdateProfile,
     navigation,
+    navigateToEarningDetails,
   };
 };
 

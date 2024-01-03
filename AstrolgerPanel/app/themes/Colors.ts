@@ -13,4 +13,5 @@ export default {
   offShade: '#C2C4C6',
   green: '#006600',
   orange: '#FFA500',
+  darkBlue: '#11235A',
 };
