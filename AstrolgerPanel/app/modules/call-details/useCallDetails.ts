@@ -21,7 +21,7 @@ const useCallDetails = () => {
   };
   const showMode = (name: string) => {
     DateTimePickerAndroid.open({
-      value: fromDate,
+      value: name === 'from' ? fromDate : toDate,
       onChange: (a, b) => onChange(a, b, name),
       is24Hour: true,
       maximumDate: new Date(),
