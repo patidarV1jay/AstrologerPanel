@@ -30,6 +30,9 @@ export const ScreenString = {
   dailyCredit: 'Daily Credits',
   callDetais: 'Call Details',
   details: ' Search Details',
+  goLive: 'Press To Go Live',
+  earningDetails : "Earning Details",
+
 };
 
 export const ValidationStrings = {

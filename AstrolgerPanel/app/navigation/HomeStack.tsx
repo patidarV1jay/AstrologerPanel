@@ -2,7 +2,12 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HomeHeader, SecondaryHeader } from '../components';
 import { Routes, ScreenString } from '../constants';
-import { CallDetails, HomePage, UpdateProfile } from '../modules';
+import {
+  CallDetails,
+  EarningDetails,
+  HomePage,
+  UpdateProfile,
+} from '../modules';
 
 const StackHome = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -27,6 +32,13 @@ const HomeStack = () => {
         component={CallDetails}
         options={{
           header: () => <SecondaryHeader title={ScreenString.callDetais} />,
+        }}
+      />
+      <StackHome.Screen
+        name={Routes.EarningDetails}
+        component={EarningDetails}
+        options={{
+          header: () => <SecondaryHeader title={ScreenString.earningDetails} />,
         }}
       />
     </StackHome.Navigator>

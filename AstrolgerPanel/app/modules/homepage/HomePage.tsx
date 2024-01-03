@@ -1,3 +1,4 @@
+import { CaretRight, VideoCamera } from 'phosphor-react-native';
 import React from 'react';
 import {
   Image,
@@ -9,7 +10,7 @@ import {
 } from 'react-native';
 import { Images } from '../../assets';
 import { ScreenString } from '../../constants';
-import { Colors, verticleScale } from '../../themes';
+import { Colors, moderateScale, verticleScale } from '../../themes';
 import styles from './HomePageStyles';
 import TermsModal from './TermsModal';
 import useHomePage from './useHomePage';
@@ -23,6 +24,7 @@ const HomePage = () => {
     isModalVisible,
     toggleVisibility,
     operation,
+    navigateToEarningDetails,
   } = useHomePage();
 
   return (
@@ -35,7 +37,18 @@ const HomePage = () => {
         <View style={styles.imageView}>
           <Image style={styles.banner} source={Images.banner} />
         </View>
-
+        {/* <View style={styles.dailyIncome}>
+          <Text style={styles.creditText}>Daily Credits:</Text>
+          <Text style={styles.amountText}>2000</Text>
+        </View>
+        <Pressable
+          style={styles.totalEarningsView}
+          onPress={navigateToEarningDetails}>
+          <Text style={styles.totalEarningText}>
+            {ScreenString.earningDetails}
+          </Text>
+          <CaretRight size={moderateScale(25)} weight="bold" />
+        </Pressable> */}
         <View style={styles.statusContainer}>
           <View style={styles.statusContent}>
             <Text style={styles.availabilityStatusText}>
@@ -128,43 +141,15 @@ const HomePage = () => {
             </Text>
           </TouchableOpacity>
         </View>
-        {/* <TouchableOpacity style={styles.boostProfileButton}>
-          <Text style={styles.birthDetailsText}>
-            {ScreenString.boostProfile}
-          </Text>
-        </TouchableOpacity> */}
-        {/* <FlatList
-          data={IconList}
-          renderItem={({ item }) => {
-            return (
-              <View>
-                <Image
-                  source={item.source
-                  style={{
-                    width: horizontalScale(120),
-                    height: verticleScale(400),
-                  }}
-                />
-              </View>
-            );
-          }}
-          scrollEnabled={false}
-          numColumns={3}
-          key={3}
-        /> */}
       </ScrollView>
-      <View
-        style={{
-          backgroundColor: Colors.orange,
-          padding: 10,
-          position: 'absolute',
-          bottom: 0,
-          flex: 1,
-          width: '100%',
-          elevation: 20,
-          shadowColor: Colors.gray,
-        }}
-      />
+      <TouchableOpacity style={styles.footer}>
+        <VideoCamera
+          size={moderateScale(28)}
+          color={Colors.light}
+          weight="bold"
+        />
+        <Text style={styles.goLiveText}>{ScreenString.goLive}</Text>
+      </TouchableOpacity>
       <TermsModal
         isModalVisible={isModalVisible}
         setIsModalVisible={setIsModalVisible}

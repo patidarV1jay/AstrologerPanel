@@ -72,6 +72,46 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
   },
+  lightContainer: {
+    backgroundColor: Colors.light,
+    marginHorizontal: horizontalScale(10),
+    borderRadius: moderateScale(10),
+    padding: moderateScale(5),
+    marginTop: verticleScale(5),
+    paddingHorizontal: horizontalScale(15),
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  amountText: {
+    fontWeight: 'bold',
+    color: Colors.cornFlowerBlue,
+    fontSize: moderateScale(18),
+  },
+  dayIncomeText: {
+    color: Colors.gray,
+    fontSize: moderateScale(12),
+  },
+  view: {
+    fontWeight: '500',
+    fontSize: moderateScale(15),
+    color: Colors.orange,
+  },
+  viewMoreContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '22%',
+    justifyContent: 'space-between',
+  },
+  incomeContainer: {
+    width: '39%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  vrLine: {
+    borderLeftWidth: 1,
+    borderColor: Colors.offShade,
+    marginRight: horizontalScale(10),
+  },
 });
 
 export default styles;
