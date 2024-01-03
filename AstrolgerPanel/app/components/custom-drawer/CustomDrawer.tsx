@@ -62,7 +62,7 @@ const CustomDrawer = (
         <DrawerItem
           focused={Routes.SetRate === 'Set Rate'}
           label={Routes.SetRate}
-          onPress={() => navigation.navigate(Routes.CallDetails)}
+          onPress={() => navigation.navigate(Routes.SetRate)}
           labelStyle={styles.label}
           icon={({}) => <CurrencyInr size={moderateScale(28)} weight="bold" />}
         />

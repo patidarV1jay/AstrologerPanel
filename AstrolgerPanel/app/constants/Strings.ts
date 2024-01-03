@@ -31,8 +31,13 @@ export const ScreenString = {
   callDetais: 'Call Details',
   details: ' Search Details',
   goLive: 'Press To Go Live',
-  earningDetails : "Earning Details",
-
+  earningDetails: 'Earning Details',
+  privateCallRate: 'Rate for Call or PrivateCall and Chat',
+  liveAudio: 'Rate for Live Audio Call',
+  liveVideo: 'Rate for Live Video Call',
+  rateText: 'Rate(Rs/min)',
+  discount: 'Discount ( % )',
+  discountedRate: 'Discounted Rate(Rs/min)',
 };
 
 export const ValidationStrings = {
@@ -43,7 +48,10 @@ export const ValidationStrings = {
   noMatch: 'Password does not match.',
   aadhaarInvalid: 'Aadhar number is not valid',
   phoneInvalid: 'Phone Number is not valid',
-  negativeAmount: "Experience can't be negative.",
+  negativeExperience: "Experience can't be negative.",
   invalidExperience: 'Please enter a valid experience.',
   amountGreaterThanZero: 'Amount should be greater than 0.',
+  invalidAmount: 'Please enter a valid amount.',
+  negativeRate: "Amount can't be negative.",
+  range: 'Enter between 0 to 100.',
 };

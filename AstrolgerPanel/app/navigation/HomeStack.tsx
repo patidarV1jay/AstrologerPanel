@@ -7,6 +7,7 @@ import {
   EarningDetails,
   HomePage,
   UpdateProfile,
+  SetRate,
 } from '../modules';
 
 const StackHome = createNativeStackNavigator();
@@ -39,6 +40,13 @@ const HomeStack = () => {
         component={EarningDetails}
         options={{
           header: () => <SecondaryHeader title={ScreenString.earningDetails} />,
+        }}
+      />
+      <StackHome.Screen
+        name={Routes.SetRate}
+        component={SetRate}
+        options={{
+          header: () => <SecondaryHeader title={Routes.SetRate} />,
         }}
       />
     </StackHome.Navigator>

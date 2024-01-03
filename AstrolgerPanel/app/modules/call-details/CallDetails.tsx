@@ -21,8 +21,7 @@ const CallDetails = () => {
             <View />
             <Calendar
               size={moderateScale(28)}
-              weight="bold"
-              color={Colors.orange}
+              color={Colors.darkBlue}
             />
           </Pressable>
         </View>
@@ -35,8 +34,7 @@ const CallDetails = () => {
             <View />
             <Calendar
               size={moderateScale(28)}
-              weight="bold"
-              color={Colors.orange}
+              color={Colors.darkBlue}
             />
           </Pressable>
         </View>

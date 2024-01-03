@@ -77,10 +77,10 @@ const styles = StyleSheet.create({
     marginHorizontal: horizontalScale(10),
     borderRadius: moderateScale(10),
     padding: moderateScale(5),
-    marginTop: verticleScale(5),
     paddingHorizontal: horizontalScale(15),
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginVertical: verticleScale(20),
   },
   amountText: {
     fontWeight: 'bold',
