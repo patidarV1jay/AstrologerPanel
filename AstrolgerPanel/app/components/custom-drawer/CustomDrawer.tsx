@@ -24,6 +24,7 @@ import { Routes } from '../../constants';
 import { Colors, moderateScale } from '../../themes';
 import styles from './CustomDrawerStyles';
 import useCustomDrawer from './useCustomDrawer';
+import { useAppSelector } from '../../redux';
 
 const CustomDrawer = (
   props: React.JSX.IntrinsicAttributes &
@@ -32,19 +33,20 @@ const CustomDrawer = (
     } & React.RefAttributes<ScrollView>,
 ) => {
   const { navigation, signOut } = useCustomDrawer();
+  const { loggedInUser } = useAppSelector(state => state.signin);
+  const { name, email, experience } = loggedInUser;
+
   return (
-    <View style={{ flex: 1 }}>
-      <DrawerContentScrollView
-        {...props}
-        style={{ flex: 1, backgroundColor: Colors.light }}>
+    <View style={styles.container}>
+      <DrawerContentScrollView {...props}>
         <View style={styles.drawerContainer}>
           <View style={styles.drawerContent}>
             <Image source={Images.avatar} style={styles.avatar} />
             <View>
-              <Text style={styles.name}>Aacharya Hardeep</Text>
-              <Text style={styles.text}>hardeepsaini78@gmail.com</Text>
+              <Text style={styles.name}>{name}</Text>
+              <Text style={styles.text}>{email}</Text>
               <View style={styles.spaceBetween}>
-                <Text style={styles.text}>ID: 4579</Text>
+                <Text style={styles.text}>Experience: {experience}</Text>
                 <Text style={styles.text}>Followers: 32</Text>
               </View>
             </View>

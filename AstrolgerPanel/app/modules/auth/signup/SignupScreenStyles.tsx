@@ -70,7 +70,6 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     flex: 1,
-    // backgroundColor:' rgba(80, 80, 80, 0.5)',
     backgroundColor: '#80808080',
     justifyContent: 'center',
     alignItems: 'center',
@@ -82,6 +81,7 @@ const styles = StyleSheet.create({
     elevation: 24,
     borderRadius: moderateScale(5),
     paddingVertical: verticleScale(20),
+    height: '90%',
   },
   checkButton: {
     margin: 10,
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: Colors.cornFlowerBlue,
     fontSize: moderateScale(15),
-    textDecorationLine:'underline'
+    textDecorationLine: 'underline',
   },
   requestButton: {
     backgroundColor: Colors.cornFlowerBlue,
@@ -139,15 +139,16 @@ const styles = StyleSheet.create({
   },
   loginText: {
     color: Colors.cornFlowerBlue,
-    fontWeight: 'bold',
+    fontWeight: '500',
     fontSize: moderateScale(18),
     textDecorationLine: 'underline',
   },
-  checkText:{
-    fontWeight: 'bold',
+  checkText: {
+    fontWeight: '500',
     color: Colors.dark,
     fontSize: moderateScale(15),
-  }
+  },
+  selectedText: { color: 'black', fontSize: moderateScale(16) },
 });
 
 export default styles;

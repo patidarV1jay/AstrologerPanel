@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
-import { ValidationStrings } from './Strings';
 import { EmailRegEx, phoneRegExp } from './RegEx';
+import { ValidationStrings } from './Strings';
 
 export const SigninSchema = Yup.object().shape({
   username: Yup.string()
@@ -13,8 +13,8 @@ export const SigninSchema = Yup.object().shape({
 });
 
 export const SignupSchema = Yup.object().shape({
-  firstName: Yup.string().required(ValidationStrings.required),
-  lastName: Yup.string().required(ValidationStrings.required),
+  firstName: Yup.string().trim().required(ValidationStrings.required),
+  lastName: Yup.string().trim().required(ValidationStrings.required),
   phone: Yup.string()
     .matches(phoneRegExp, ValidationStrings.phoneInvalid)
     .required(ValidationStrings.required),
@@ -26,9 +26,9 @@ export const SignupSchema = Yup.object().shape({
     .typeError(ValidationStrings.invalidExperience)
     .required(ValidationStrings.required)
     .min(0, ValidationStrings.negativeExperience),
-  city: Yup.string().required(ValidationStrings.required),
-  country: Yup.string().required(ValidationStrings.required),
-  bio: Yup.string().required(ValidationStrings.required),
+  city: Yup.string().trim().required(ValidationStrings.required),
+  country: Yup.string().trim().required(ValidationStrings.required),
+  bio: Yup.string().trim().required(ValidationStrings.required),
 });
 
 export const RateSchmea = Yup.object().shape({

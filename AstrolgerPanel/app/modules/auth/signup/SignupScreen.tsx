@@ -10,7 +10,7 @@ import {
   View,
 } from 'react-native';
 import { CustomTextInput } from '../../../components';
-import { Language, ScreenString } from '../../../constants';
+import { ScreenString } from '../../../constants';
 import { useInputRef } from '../../../hooks';
 import { Colors, moderateScale } from '../../../themes';
 import DeviceKnownModal from './DeviceKnownModal';
@@ -36,7 +36,13 @@ const SignupScreen = () => {
     navigateLogin,
     isCheck,
     setIsCheck,
+    selectedDevices,
+    toggleLanguageSelection,
+    languageSelected,
+    language,
+    error,
   } = useSignupScreen();
+  const { handleSubmit } = formik;
 
   const {
     refInput1,
@@ -97,6 +103,7 @@ const SignupScreen = () => {
                     </Text>
                   )}
                 </Pressable>
+                {error && <Text style={{ color: 'red' }}>{error}</Text>}
                 {isVisible && (
                   <View style={styles.visibleDropDown}>
                     <Pressable onPress={() => handleGender(ScreenString.male)}>
@@ -172,16 +179,30 @@ const SignupScreen = () => {
                 <Pressable
                   style={styles.dropDownView}
                   onPress={() => toggleModalVisibility('system')}>
-                  <Text style={styles.genderText}>
-                    {ScreenString.deviceKnown}
-                  </Text>
+                  {!selectedDevices ? (
+                    <Text style={styles.genderText}>
+                      {ScreenString.deviceKnown}
+                    </Text>
+                  ) : (
+                    <Text style={styles.selectedText}>
+                      {selectedDevices.join(', ')}
+                    </Text>
+                  )}
                 </Pressable>
               </View>
               <View style={styles.marginBottomDropDown}>
                 <Pressable
                   style={styles.dropDownView}
                   onPress={() => toggleModalVisibility('language')}>
-                  <Text style={styles.genderText}>{ScreenString.language}</Text>
+                  {!languageSelected ? (
+                    <Text style={styles.genderText}>
+                      {ScreenString.selectLanguages}
+                    </Text>
+                  ) : (
+                    <Text style={styles.selectedText}>
+                      {languageSelected.join(', ')}
+                    </Text>
+                  )}
                 </Pressable>
               </View>
               <CustomTextInput
@@ -202,11 +223,7 @@ const SignupScreen = () => {
                       color={Colors.dark}
                     />
                   ) : (
-                    <Square
-                      size={moderateScale(24)}
-                      weight="bold"
-                      color={Colors.dark}
-                    />
+                    <Square size={moderateScale(24)} color={Colors.dark} />
                   )}
                 </Pressable>
                 <Text style={styles.checkText}>
@@ -216,7 +233,9 @@ const SignupScreen = () => {
                   </Text>
                 </Text>
               </View>
-              <TouchableOpacity style={styles.requestButton}>
+              <TouchableOpacity
+                style={styles.requestButton}
+                onPress={() => handleSubmit()}>
                 <Text style={styles.requestButtonText}>
                   {ScreenString.sendRequest}
                 </Text>
@@ -233,8 +252,9 @@ const SignupScreen = () => {
             isDevicesVisible={isDevicesVisible}
             setIsDevicesVisible={setIsDevicesVisible}
             device={device}
-            language={Language}
+            language={language}
             toggleDeviceSelection={toggleDeviceSelection}
+            toggleLanguageSelection={toggleLanguageSelection}
             setSelection={setSelection}
             cancelSelection={cancelSelection}
             system={system}

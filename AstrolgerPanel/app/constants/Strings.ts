@@ -41,8 +41,12 @@ export const ScreenString = {
   iWillbeOnleave: 'I will be on leave for',
   days: 'day(s)',
   selectValidDate: 'Select Valid Dates.',
-  applyForLeave: "Apply For Leave",
-  enterReason:'Please Enter a Valid Reason.'
+  applyForLeave: 'Apply For Leave',
+  enterReason: 'Please Enter a Valid Reason.',
+  systemKnownError: 'Please select a System.',
+  languageError: 'Please select language(s).',
+  selectLanguages: 'Select Languages',
+  acceptTerms: 'Please, check terms and conditions.',
 };
 
 export const ValidationStrings = {
