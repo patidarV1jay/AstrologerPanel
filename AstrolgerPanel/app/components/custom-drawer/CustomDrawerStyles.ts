@@ -7,6 +7,7 @@ import {
 } from '../../themes';
 
 const styles = StyleSheet.create({
+  container: {flex:1},
   avatar: {
     height: verticleScale(140),
     width: horizontalScale(60),

@@ -1,4 +1,5 @@
 export * from './signin';
+export * from './signup';
 export {
   persistor,
   default as store,

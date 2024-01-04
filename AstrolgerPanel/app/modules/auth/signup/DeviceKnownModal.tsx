@@ -12,7 +12,8 @@ interface Props {
   device: DeviceType[];
   language: DeviceType[];
   toggleDeviceSelection: (id: number) => void;
-  setSelection: () => void;
+  toggleLanguageSelection: (id: number) => void;
+  setSelection: (system: string) => void;
   cancelSelection: () => void;
   system: string;
 }
@@ -22,6 +23,7 @@ const DeviceKnownModal: FC<Props> = ({
   setIsDevicesVisible,
   device,
   toggleDeviceSelection,
+  toggleLanguageSelection,
   setSelection,
   cancelSelection,
   system,
@@ -37,12 +39,17 @@ const DeviceKnownModal: FC<Props> = ({
               return (
                 <TouchableOpacity
                   style={styles.checkButton}
-                  onPress={() => toggleDeviceSelection(item.id)}>
+                  onPress={() =>
+                    system === 'system'
+                      ? toggleDeviceSelection(item.id)
+                      : toggleLanguageSelection(item.id)
+                  }>
                   {item.isSelected ? (
                     <CheckSquare size={moderateScale(24)} />
                   ) : (
                     <Square size={moderateScale(24)} />
                   )}
+
                   <Text style={styles.deviceText} numberOfLines={2}>
                     {item.device}
                   </Text>
@@ -53,7 +60,7 @@ const DeviceKnownModal: FC<Props> = ({
             numColumns={2}
           />
           <View style={styles.bottomButton}>
-            <TouchableOpacity onPress={setSelection}>
+            <TouchableOpacity onPress={() => setSelection(system)}>
               <Text style={styles.bottomButtonText}>{ScreenString.set}</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={cancelSelection}>
