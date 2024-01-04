@@ -3,7 +3,7 @@ import { ValidationStrings } from './Strings';
 import { EmailRegEx, phoneRegExp } from './RegEx';
 
 export const SigninSchema = Yup.object().shape({
-  email: Yup.string()
+  username: Yup.string()
     .email(ValidationStrings.invalidMail)
     .required(ValidationStrings.required)
     .matches(EmailRegEx, ValidationStrings.invalidMail),
@@ -40,5 +40,5 @@ export const RateSchmea = Yup.object().shape({
     .typeError(ValidationStrings.invalidExperience)
     .required(ValidationStrings.required)
     .min(0, ValidationStrings.negativeRate)
-    .max(100, ValidationStrings.range)
+    .max(100, ValidationStrings.range),
 });
