@@ -1,6 +1,7 @@
 import { At, Password } from 'phosphor-react-native';
 import React from 'react';
 import {
+  ActivityIndicator,
   Image,
   Keyboard,
   Pressable,
@@ -16,7 +17,7 @@ import styles from './SigninScreenStyles';
 import useSigninScreen from './useSigninScreen';
 
 const SigninScreen = () => {
-  const { formik, navigateSignup } = useSigninScreen();
+  const { formik, navigateSignup, isloading, error } = useSigninScreen();
   const { handleSubmit } = formik;
   const { refInput1, focusNextTextInput } = useInputRef();
   return (
@@ -27,7 +28,7 @@ const SigninScreen = () => {
         <CustomTextInput
           placeholder="Email"
           formik={formik}
-          name="email"
+          name="username"
           Icon={At}
           secureTextEntry={false}
           returnKeyType="next"
@@ -47,7 +48,11 @@ const SigninScreen = () => {
         <TouchableOpacity
           style={styles.blueButton}
           onPress={() => handleSubmit()}>
-          <Text style={styles.loginText}>{ScreenString.login}</Text>
+          {isloading ? (
+            <ActivityIndicator />
+          ) : (
+            <Text style={styles.loginText}>{ScreenString.login}</Text>
+          )}
         </TouchableOpacity>
         <Pressable onPress={navigateSignup}>
           <Text style={styles.newUserText}>
