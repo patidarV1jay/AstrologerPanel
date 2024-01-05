@@ -10,6 +10,7 @@ import {
   SetRate,
   ApplyLeave,
   MyPerformace,
+  MyPaymentReport,
 } from '../modules';
 
 const StackHome = createNativeStackNavigator();
@@ -63,6 +64,13 @@ const HomeStack = () => {
         component={MyPerformace}
         options={{
           header: () => <SecondaryHeader title={Routes.MyPerformance} />,
+        }}
+      />
+      <StackHome.Screen
+        name={Routes.PayReport}
+        component={MyPaymentReport}
+        options={{
+          header: () => <SecondaryHeader title={Routes.PayReport} />,
         }}
       />
     </StackHome.Navigator>

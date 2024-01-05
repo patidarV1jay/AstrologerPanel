@@ -347,3 +347,18 @@ export const ImportantPoints = [
   'Be cautious when providing insights about pregnancy or fertility.Avoid answering gender reveal questions.',
   'Exercise extreme caution when making predictions about death,accidents, or other tragic events.',
 ];
+
+export const Months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
