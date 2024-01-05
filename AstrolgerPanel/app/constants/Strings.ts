@@ -72,6 +72,11 @@ export const ScreenString = {
   callRateCalculation: 'Successful call taken by me in a month.',
   chatResponseRankingCalculation: 'My ranking as per my response time.',
   chatReponseTimeCalculation: 'Average time taken by me to handle a question.',
+  from: 'From',
+  to: 'To',
+  report: 'Find Report',
+  selectMonth: 'Select Month',
+  selectYear: 'Select Year',
 };
 
 export const ValidationStrings = {

@@ -11,6 +11,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.light,
   },
+  categories: {
+    color: Colors.dark,
+    fontSize: moderateScale(16),
+  },
   contentConatiner: {
     flexDirection: 'row',
     marginHorizontal: horizontalScale(10),
@@ -54,9 +58,9 @@ const styles = StyleSheet.create({
     marginHorizontal: horizontalScale(15),
   },
   section: {
-    borderBottomWidth: 2,
+    borderBottomWidth: 1,
     marginBottom: verticleScale(15),
-    borderColor: Colors.dark,
+    borderColor: Colors.gray,
     marginVertical: verticleScale(25),
     flexDirection: 'row',
     alignItems: 'center',
@@ -66,6 +70,14 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.orange,
     marginVertical: verticleScale(28),
     borderRadius: moderateScale(5),
+  },
+  flatlistView: {
+    borderWidth: 1,
+    width: '50%',
+    borderRadius: moderateScale(5),
+  },
+  padding: {
+    padding: moderateScale(5),
   },
 });
 

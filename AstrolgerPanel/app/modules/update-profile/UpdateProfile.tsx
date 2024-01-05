@@ -58,25 +58,21 @@ const UpdateProfile = () => {
                 style={styles.section}
                 onTouchEnd={() => filterCategoryDropDown('category1')}>
                 <Text style={styles.categoryText}>{category1}</Text>
-                <CaretDown size={moderateScale(25)} weight="bold" />
+                <CaretDown
+                  size={moderateScale(25)}
+                  weight="bold"
+                  color={Colors.orange}
+                />
               </View>
               {categoryDropDown === 'category1' && (
-                <View
-                  style={{
-                    borderWidth: 1,
-                    width: '50%',
-                    borderRadius: moderateScale(5),
-                  }}>
+                <View style={styles.flatlistView}>
                   <FlatList
                     data={Categories}
                     renderItem={({ item }) => {
                       return (
-                        <View style={{ padding: moderateScale(5) }}>
+                        <View style={styles.padding}>
                           <Text
-                            style={{
-                              color: Colors.dark,
-                              fontSize: moderateScale(16),
-                            }}
+                            style={styles.categories}
                             onPress={() => {
                               setCategory1(item.category);
                               filterCategoryDropDown('');
@@ -95,25 +91,21 @@ const UpdateProfile = () => {
                 style={styles.section}
                 onTouchEnd={() => filterCategoryDropDown('category2')}>
                 <Text style={styles.categoryText}>{category2}</Text>
-                <CaretDown size={moderateScale(25)} weight="bold" />
+                <CaretDown
+                  size={moderateScale(25)}
+                  weight="bold"
+                  color={Colors.orange}
+                />
               </View>
               {categoryDropDown === 'category2' && (
-                <View
-                  style={{
-                    borderWidth: 1,
-                    width: '50%',
-                    borderRadius: moderateScale(5),
-                  }}>
+                <View style={styles.flatlistView}>
                   <FlatList
                     data={Categories}
                     renderItem={({ item }) => {
                       return (
                         <View style={{ padding: moderateScale(5) }}>
                           <Text
-                            style={{
-                              color: Colors.dark,
-                              fontSize: moderateScale(16),
-                            }}
+                            style={styles.categories}
                             onPress={() => {
                               setCategory2(item.category);
                               filterCategoryDropDown('');
@@ -132,25 +124,21 @@ const UpdateProfile = () => {
                 style={styles.section}
                 onTouchEnd={() => filterCategoryDropDown('category3')}>
                 <Text style={styles.categoryText}>{category3}</Text>
-                <CaretDown size={moderateScale(25)} weight="bold" />
+                <CaretDown
+                  size={moderateScale(25)}
+                  weight="bold"
+                  color={Colors.orange}
+                />
               </View>
               {categoryDropDown === 'category3' && (
-                <View
-                  style={{
-                    borderWidth: 1,
-                    width: '50%',
-                    borderRadius: moderateScale(5),
-                  }}>
+                <View style={styles.flatlistView}>
                   <FlatList
                     data={Categories}
                     renderItem={({ item }) => {
                       return (
                         <View style={{ padding: moderateScale(5) }}>
                           <Text
-                            style={{
-                              color: Colors.dark,
-                              fontSize: moderateScale(16),
-                            }}
+                            style={styles.categories}
                             onPress={() => {
                               setCategory3(item.category);
                               filterCategoryDropDown('');

@@ -1,14 +1,12 @@
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import {
   Article,
-  Book,
-  ChartBar,
   ChartLineUp,
   CurrencyInr,
   Envelope,
   Notebook,
   Phone,
-  SignOut,
+  SignOut
 } from 'phosphor-react-native';
 import React from 'react';
 import {
@@ -21,10 +19,10 @@ import {
 } from 'react-native';
 import { Images } from '../../assets';
 import { Routes } from '../../constants';
-import { Colors, moderateScale } from '../../themes';
+import { useAppSelector } from '../../redux';
+import { moderateScale } from '../../themes';
 import styles from './CustomDrawerStyles';
 import useCustomDrawer from './useCustomDrawer';
-import { useAppSelector } from '../../redux';
 
 const CustomDrawer = (
   props: React.JSX.IntrinsicAttributes &
@@ -78,7 +76,7 @@ const CustomDrawer = (
         <DrawerItem
           focused
           label={Routes.PayReport}
-          onPress={() => navigation.navigate(Routes.MyPerformance)}
+          onPress={() => navigation.navigate(Routes.PayReport)}
           labelStyle={styles.label}
           icon={({}) => <Article size={moderateScale(28)} weight="bold" />}
         />
