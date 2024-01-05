@@ -14,5 +14,6 @@ export default {
   green: '#006600',
   orange: '#FFA500',
   darkBlue: '#11235A',
-  navyblue: '#365486'
+  navyblue: '#365486',
+  statusColor: "#80808080"
 };

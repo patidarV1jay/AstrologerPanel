@@ -11,10 +11,20 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#80808080',
   },
+  redText: {
+    color: Colors.red,
+    fontSize: moderateScale(12)
+  },
+
+  centerText: {
+    alignSelf: 'center',
+    fontWeight: '500',
+    color: Colors.light,
+  },
+  conditionContainer: { marginHorizontal: horizontalScale(20) },
   modalContentContainer: {
     backgroundColor: Colors.light,
     width: '80%',
-    height: '45%',
     alignSelf: 'center',
     borderRadius: moderateScale(10),
   },
@@ -212,6 +222,32 @@ const styles = StyleSheet.create({
     color: Colors.dark,
     padding: moderateScale(10),
     fontSize: moderateScale(18),
+  },
+  flex: {
+    flex: 1,
+  },
+  importantText: {
+    color: Colors.red,
+    fontWeight: '500',
+    fontSize: moderateScale(20),
+    marginTop: verticleScale(10),
+    alignSelf: 'center',
+  },
+  pointsText: {
+    color: Colors.dark,
+    fontSize: moderateScale(12),
+    marginVertical: verticleScale(5),
+  },
+  buttonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  buttonFillBlue: {
+    backgroundColor: Colors.cornFlowerBlue,
+    width: '40%',
+    borderRadius: moderateScale(10),
+    padding: moderateScale(10),
+    marginVertical: verticleScale(30),
   },
 });
 

@@ -339,3 +339,11 @@ export const Categories = [
     category: 'Business',
   },
 ];
+
+export const ImportantPoints = [
+  'Refrain from making predictions about negative events without a clear ethical basis.',
+  'Be sensitive to questions related to ethnic, religious, or cultural backgrounds.',
+  'Exercise caution when asked for advice on lottery numbers or gambling.',
+  'Be cautious when providing insights about pregnancy or fertility.Avoid answering gender reveal questions.',
+  'Exercise extreme caution when making predictions about death,accidents, or other tragic events.',
+];

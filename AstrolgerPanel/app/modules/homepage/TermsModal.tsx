@@ -1,14 +1,9 @@
-import {
-  View,
-  Text,
-  StatusBar,
-  Touchable,
-  TouchableOpacity,
-} from 'react-native';
 import React, { Dispatch, FC, SetStateAction } from 'react';
-import { Modal } from 'react-native';
-import styles from './HomePageStyles';
+import { Modal, StatusBar, Text, TouchableOpacity, View } from 'react-native';
+import { ImportantPoints, ScreenString } from '../../constants';
 import { Colors } from '../../themes';
+import styles from './HomePageStyles';
+import { FlatList } from 'react-native-gesture-handler';
 
 interface Props {
   isModalVisible: boolean;
@@ -24,21 +19,36 @@ const TermsModal: FC<Props> = ({
 }) => {
   return (
     <Modal visible={isModalVisible} transparent={true} animationType="fade">
-      <StatusBar backgroundColor="#80808080" />
+      <StatusBar backgroundColor={Colors.statusColor} />
       <View style={styles.modalContainer}>
-        <View style={{ flex: 1 }} onTouchEnd={() => setIsModalVisible(false)} />
+        <View style={styles.flex} onTouchEnd={() => setIsModalVisible(false)} />
         <View style={styles.modalContentContainer}>
-          <TouchableOpacity
-            style={{
-              backgroundColor: Colors.cornFlowerBlue,
-              padding: 20,
-              margin: 20,
-            }}
-            onPress={() => toggleStatus(operation)}>
-            <Text>Cancel</Text>
-          </TouchableOpacity>
+          <View style={styles.conditionContainer}>
+            <Text style={styles.importantText}>{ScreenString.important}</Text>
+            <FlatList
+              data={ImportantPoints}
+              renderItem={({ item }) => {
+                return <Text style={styles.pointsText}>{item}</Text>;
+              }}
+            />
+            <Text style={styles.redText}>
+            {ScreenString.respectPolicy}
+            </Text>
+          </View>
+          <View style={styles.buttonsContainer}>
+            <TouchableOpacity
+              style={styles.buttonFillBlue}
+              onPress={() => setIsModalVisible(false)}>
+              <Text style={styles.centerText}>{ScreenString.cancel}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.buttonFillBlue}
+              onPress={() => toggleStatus(operation)}>
+              <Text style={styles.centerText}>{ScreenString.proceed}</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <View style={{ flex: 1 }} onTouchEnd={() => setIsModalVisible(false)} />
+        <View style={styles.flex} onTouchEnd={() => setIsModalVisible(false)} />
       </View>
     </Modal>
   );
