@@ -47,6 +47,31 @@ export const ScreenString = {
   languageError: 'Please select language(s).',
   selectLanguages: 'Select Languages',
   acceptTerms: 'Please, check terms and conditions.',
+  important: 'Important',
+  respectPolicy:
+    '* Respect Lekha Jhoka terms and condition as on violation necessary actions can be taken and one may be banned from using the app.',
+  proceed: 'Proceed',
+  unavailable: 'Unavailable For',
+  videoCall: 'Video Call',
+  chat: 'Chat',
+  call: 'Call',
+  unlimited: 'Unlimited free call and chats',
+  myFollowers: 'My Followers',
+  callPickupRate: 'Call Pickup Rate',
+  chatPickupRate: 'Chat Pickup Rate',
+  freeCallChatConversionRate: 'Free Call/Chat Conversion Rate',
+  chatResponseRanking: 'Chat Response Ranking',
+  chatReponseTime: 'Chat Response Time',
+  reviews: 'Reviews',
+  rating: 'Ratings',
+  howAboveFactors: 'How Above Factors Calculated :',
+  freeCallConversion: 'Free Call/Chat Conversion :',
+  freeCallConversionCalculation:
+    "The tally of free calls/chats I've received, and how many of those users have become repeat customers.",
+  chatRateCalculation: 'Successful chat taken by me in a month.',
+  callRateCalculation: 'Successful call taken by me in a month.',
+  chatResponseRankingCalculation: 'My ranking as per my response time.',
+  chatReponseTimeCalculation: 'Average time taken by me to handle a question.',
 };
 
 export const ValidationStrings = {

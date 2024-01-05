@@ -1,4 +1,4 @@
-import { CaretRight, VideoCamera } from 'phosphor-react-native';
+import { VideoCamera } from 'phosphor-react-native';
 import React from 'react';
 import {
   Image,
@@ -24,7 +24,6 @@ const HomePage = () => {
     isModalVisible,
     toggleVisibility,
     operation,
-    navigateToEarningDetails,
   } = useHomePage();
 
   return (
@@ -37,22 +36,10 @@ const HomePage = () => {
         <View style={styles.imageView}>
           <Image style={styles.banner} source={Images.banner} />
         </View>
-        {/* <View style={styles.dailyIncome}>
-          <Text style={styles.creditText}>Daily Credits:</Text>
-          <Text style={styles.amountText}>2000</Text>
-        </View>
-        <Pressable
-          style={styles.totalEarningsView}
-          onPress={navigateToEarningDetails}>
-          <Text style={styles.totalEarningText}>
-            {ScreenString.earningDetails}
-          </Text>
-          <CaretRight size={moderateScale(25)} weight="bold" />
-        </Pressable> */}
         <View style={styles.statusContainer}>
           <View style={styles.statusContent}>
             <Text style={styles.availabilityStatusText}>
-              Unavailable for Call
+              {ScreenString.unavailable} {ScreenString.call}
             </Text>
             <Pressable
               onPress={
@@ -71,7 +58,7 @@ const HomePage = () => {
           </View>
           <View style={styles.statusContent}>
             <Text style={styles.availabilityStatusText}>
-              Unavailable for Chat
+              {ScreenString.unavailable} {ScreenString.chat}
             </Text>
             <Pressable
               onPress={
@@ -90,7 +77,7 @@ const HomePage = () => {
           </View>
           <View style={styles.statusContent}>
             <Text style={styles.availabilityStatusText}>
-              Unavailable for Video Call
+              {ScreenString.unavailable} {ScreenString.videoCall}
             </Text>
             <Pressable
               onPress={
@@ -111,7 +98,7 @@ const HomePage = () => {
           </View>
           <View style={[styles.statusContent, styles.bottomSpace]}>
             <Text style={styles.availabilityStatusText}>
-              Unlimited free call and chats
+              {ScreenString.unlimited}
             </Text>
             <Pressable
               onPress={

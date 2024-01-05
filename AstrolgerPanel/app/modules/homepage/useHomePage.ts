@@ -17,7 +17,7 @@ const useHomePage = () => {
   });
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const [operation, setOperation] = useState<string>('');
-  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>()
+  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
 
   const toggleStatus = (operation: string) => {
     operation === 'chat' && setSlider({ ...slider, chat: !slider.chat });
@@ -35,9 +35,9 @@ const useHomePage = () => {
     setOperation(operation);
   };
 
-  const navigateToEarningDetails = () =>{
-  navigation.navigate(Routes.EarningDetails)
-  }
+  const navigateToEarningDetails = () => {
+    navigation.navigate(Routes.EarningDetails);
+  };
   return {
     slider,
     setSlider,
@@ -46,7 +46,7 @@ const useHomePage = () => {
     setIsModalVisible,
     toggleVisibility,
     operation,
-    navigateToEarningDetails
+    navigateToEarningDetails,
   };
 };
 
