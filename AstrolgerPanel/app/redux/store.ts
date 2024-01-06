@@ -12,7 +12,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   signin: signinReducer,
-  signup: signinReducer,
+  signup: signupReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

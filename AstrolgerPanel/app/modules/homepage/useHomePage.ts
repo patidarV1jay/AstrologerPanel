@@ -30,7 +30,6 @@ const useHomePage = () => {
   };
 
   const toggleVisibility = (operation: string) => {
-    const { chat, call, videoChat, freeChat } = slider;
     setIsModalVisible(true);
     setOperation(operation);
   };

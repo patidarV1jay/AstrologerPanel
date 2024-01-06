@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
   redText: {
     color: Colors.red,
-    fontSize: moderateScale(12)
+    fontSize: moderateScale(12),
   },
 
   centerText: {

@@ -13,6 +13,10 @@ const useHomeHeader = () => {
     navigation.navigate(Routes.UpdateProfile);
   };
 
+  const navigaeToSupport = () => {
+    navigation.navigate(Routes.Support);
+  };
+
   const navigateToEarningDetails = () => {
     navigation.navigate(Routes.EarningDetails);
   };
@@ -23,6 +27,7 @@ const useHomeHeader = () => {
     navigateToUpdateProfile,
     navigation,
     navigateToEarningDetails,
+    navigaeToSupport,
   };
 };
 

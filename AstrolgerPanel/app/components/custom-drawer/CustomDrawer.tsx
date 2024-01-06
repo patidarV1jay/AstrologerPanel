@@ -6,7 +6,7 @@ import {
   Envelope,
   Notebook,
   Phone,
-  SignOut
+  SignOut,
 } from 'phosphor-react-native';
 import React from 'react';
 import {
@@ -18,7 +18,7 @@ import {
   View,
 } from 'react-native';
 import { Images } from '../../assets';
-import { Routes } from '../../constants';
+import { Routes, ScreenString } from '../../constants';
 import { useAppSelector } from '../../redux';
 import { moderateScale } from '../../themes';
 import styles from './CustomDrawerStyles';
@@ -98,7 +98,7 @@ const CustomDrawer = (
       <Pressable style={styles.footer} onPress={signOut}>
         <View style={styles.signOutView}>
           <SignOut size={32} weight="bold" />
-          <Text style={styles.signOutText}>Sign Out</Text>
+          <Text style={styles.signOutText}>{ScreenString.signOut}</Text>
         </View>
       </Pressable>
     </View>
