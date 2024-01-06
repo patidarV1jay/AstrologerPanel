@@ -2,7 +2,7 @@ import { CheckSquare, Square } from 'phosphor-react-native';
 import React, { Dispatch, FC, SetStateAction } from 'react';
 import { FlatList, Modal, Text, TouchableOpacity, View } from 'react-native';
 import { ScreenString } from '../../../constants';
-import { moderateScale } from '../../../themes';
+import { Colors, moderateScale } from '../../../themes';
 import { DeviceType } from '../../../types';
 import styles from './SignupScreenStyles';
 
@@ -14,13 +14,12 @@ interface Props {
   toggleDeviceSelection: (id: number) => void;
   toggleLanguageSelection: (id: number) => void;
   setSelection: (system: string) => void;
-  cancelSelection: () => void;
+  cancelSelection: (name: string) => void;
   system: string;
 }
 
 const DeviceKnownModal: FC<Props> = ({
   isDevicesVisible,
-  setIsDevicesVisible,
   device,
   toggleDeviceSelection,
   toggleLanguageSelection,
@@ -63,8 +62,17 @@ const DeviceKnownModal: FC<Props> = ({
             <TouchableOpacity onPress={() => setSelection(system)}>
               <Text style={styles.bottomButtonText}>{ScreenString.set}</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={cancelSelection}>
-              <Text style={styles.bottomButtonText}>{ScreenString.cancel}</Text>
+            <TouchableOpacity onPress={() => cancelSelection(system)}>
+              {language.length !== undefined ? (
+                <Text style={[styles.bottomButtonText]}>
+                  {ScreenString.cancel}
+                </Text>
+              ) : (
+                <Text
+                  style={[styles.bottomButtonText, { color: Colors.offShade }]}>
+                  {ScreenString.cancel}
+                </Text>
+              )}
             </TouchableOpacity>
           </View>
         </View>

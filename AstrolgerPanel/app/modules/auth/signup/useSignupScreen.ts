@@ -1,7 +1,7 @@
 import { ParamListBase, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useFormik } from 'formik';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ToastAndroid } from 'react-native';
 import {
   Devices,
@@ -10,7 +10,12 @@ import {
   ScreenString,
   SignupSchema,
 } from '../../../constants';
-import { registerUser, useAppDispatch, useAppSelector } from '../../../redux';
+import {
+  registerUser,
+  registraionSuccess,
+  useAppDispatch,
+  useAppSelector,
+} from '../../../redux';
 import { DeviceType } from '../../../types';
 
 const useSignupScreen = () => {
@@ -26,12 +31,19 @@ const useSignupScreen = () => {
   const [isCheck, setIsCheck] = useState<boolean>(false);
 
   const dispatch = useAppDispatch();
-  const {} = useAppSelector(state => state.signup);
+  const { isSuccess, isLoading } = useAppSelector(state => state.signup);
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
 
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      ToastAndroid.show('Registeration Successful', ToastAndroid.SHORT);
+      dispatch(registraionSuccess());
+    }
+  }, [isSuccess]);
 
   const validateGender = () => {
     if (selectedGender === '') {
@@ -106,8 +118,9 @@ const useSignupScreen = () => {
     setSystem(name);
   };
 
-  const cancelSelection = () => {
-    setDevice(Devices);
+  const cancelSelection = (system: string) => {
+    system === 'system' && setDevice(Devices);
+    system === 'language' && setLanguage(Language);
   };
 
   const setSelection = (system: string) => {
@@ -153,6 +166,7 @@ const useSignupScreen = () => {
     toggleLanguageSelection,
     languageSelected,
     error,
+    isLoading,
   };
 };
 

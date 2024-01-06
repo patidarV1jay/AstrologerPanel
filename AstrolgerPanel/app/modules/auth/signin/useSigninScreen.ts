@@ -18,10 +18,12 @@ const useSigninScreen = () => {
     state => state.signin,
   );
 
-  if (error) {
-    ToastAndroid.show(error, ToastAndroid.SHORT);
-    dispatch(resetError());
-  }
+  useEffect(() => {
+    if (error) {
+      ToastAndroid.show(error, ToastAndroid.SHORT);
+      dispatch(resetError());
+    }
+  }, [error]);
 
   const navigateSignup = () => {
     navigation.navigate(Routes.Signup);

@@ -1,6 +1,7 @@
 import { CheckSquare, Square } from 'phosphor-react-native';
 import React from 'react';
 import {
+  ActivityIndicator,
   Keyboard,
   KeyboardAvoidingView,
   Pressable,
@@ -41,6 +42,7 @@ const SignupScreen = () => {
     languageSelected,
     language,
     error,
+    isLoading,
   } = useSignupScreen();
   const { handleSubmit } = formik;
 
@@ -236,9 +238,13 @@ const SignupScreen = () => {
               <TouchableOpacity
                 style={styles.requestButton}
                 onPress={() => handleSubmit()}>
-                <Text style={styles.requestButtonText}>
-                  {ScreenString.sendRequest}
-                </Text>
+                {isLoading ? (
+                  <ActivityIndicator />
+                ) : (
+                  <Text style={styles.requestButtonText}>
+                    {ScreenString.sendRequest}
+                  </Text>
+                )}
               </TouchableOpacity>
               <Pressable onPress={navigateLogin}>
                 <Text style={styles.accountText}>

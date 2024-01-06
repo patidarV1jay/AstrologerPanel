@@ -11,5 +11,6 @@ export enum Routes {
   PayReport = 'Payment Report',
   Articles = 'Articles',
   Leave = 'Apply Leave',
-  EarningDetails = "Earning Details"
+  EarningDetails = 'Earning Details',
+  Support = 'Support',
 }

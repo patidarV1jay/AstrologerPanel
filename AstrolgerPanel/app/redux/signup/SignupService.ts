@@ -44,9 +44,10 @@ const registerUser = createAsyncThunk(
         system_known: selectedDevices,
         language_known: languageSelected,
       });
-      console.log(response);
+      console.log(response.data);
+      return response.data;
     } catch (error) {
-      console.log(error);
+      throw new Error('Request Failed, Try Again');
     }
   },
 );

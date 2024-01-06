@@ -11,6 +11,7 @@ import {
   ApplyLeave,
   MyPerformace,
   MyPaymentReport,
+  SupportScreen,
 } from '../modules';
 
 const StackHome = createNativeStackNavigator();
@@ -71,6 +72,13 @@ const HomeStack = () => {
         component={MyPaymentReport}
         options={{
           header: () => <SecondaryHeader title={Routes.PayReport} />,
+        }}
+      />
+      <StackHome.Screen
+        name={Routes.Support}
+        component={SupportScreen}
+        options={{
+          header: () => <SecondaryHeader title={Routes.Support} />,
         }}
       />
     </StackHome.Navigator>

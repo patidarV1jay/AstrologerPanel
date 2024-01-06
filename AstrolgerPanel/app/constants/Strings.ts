@@ -77,6 +77,12 @@ export const ScreenString = {
   report: 'Find Report',
   selectMonth: 'Select Month',
   selectYear: 'Select Year',
+  signOut: 'Sign Out',
+  support: 'Support',
+  shareProfile: 'Share Profile',
+  raiseTicket: 'Raise Ticket',
+  mentionSubject: 'Please mention the subject.',
+  mentionConcern: 'Please mention your concern.',
 };
 
 export const ValidationStrings = {
@@ -97,4 +103,6 @@ export const ValidationStrings = {
 
 export const PlaceholderStrings = {
   reasonForLeave: 'Specify the reason for leave(s)....',
+  subject: 'Subject',
+  yourConcern: 'Your Concern',
 };
