@@ -17,6 +17,7 @@ const SetRate = () => {
     formikForLiveVideo,
     value,
   } = useRate();
+
   return (
     <View style={styles.container}>
       <DropDownComponent

@@ -17,7 +17,7 @@ export const ScreenString = {
   sendRequest: 'Send Request',
   alreadyHaveAccount: 'Already have an Account?',
   check: 'By checking, I Agree to',
-  lekhaJhoka: 'Lekha Jhoka',
+  lekhaJhoka: 'Lekha Jhokaa',
   divineWelcome: 'Divine Welcome,',
   wishToGetBirthDetails:
     'Wish to get birth detail and birth chat during ongoing call, click below.',
@@ -83,6 +83,13 @@ export const ScreenString = {
   raiseTicket: 'Raise Ticket',
   mentionSubject: 'Please mention the subject.',
   mentionConcern: 'Please mention your concern.',
+  permissionRequired: 'Permission Required',
+  settingPath: 'Tap Settings and Turn Permission on.',
+  settings: 'Settings',
+  later: 'Later',
+  ok: 'Okay',
+  notUpdateAvaibility: 'Failed to update avability. Try Again.',
+  error: 'Error Occured',
 };
 
 export const ValidationStrings = {
