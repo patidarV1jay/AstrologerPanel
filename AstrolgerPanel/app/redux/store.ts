@@ -4,6 +4,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { persistReducer, persistStore } from 'redux-persist';
 import { signinReducer } from './signin';
 import { signupReducer } from './signup';
+import { availableForCallReducer, LiveStreamReducer } from './available';
 
 const persistConfig = {
   key: 'root',
@@ -13,6 +14,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
   signin: signinReducer,
   signup: signupReducer,
+  availableForCallReducer,
+  LiveStreamReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

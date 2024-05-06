@@ -10,13 +10,18 @@ interface Props {
   setIsModalVisible: Dispatch<SetStateAction<boolean>>;
   operation: string;
   toggleStatus: (operation: string) => void;
+  toggle: boolean;
+  toggleCallVisibility: (args: string) => void;
 }
 const TermsModal: FC<Props> = ({
   isModalVisible,
   setIsModalVisible,
   operation,
   toggleStatus,
+  toggle,
+  toggleCallVisibility,
 }) => {
+  console.log(toggle)
   return (
     <Modal visible={isModalVisible} transparent={true} animationType="fade">
       <StatusBar backgroundColor={Colors.statusColor} />
@@ -31,9 +36,7 @@ const TermsModal: FC<Props> = ({
                 return <Text style={styles.pointsText}>{item}</Text>;
               }}
             />
-            <Text style={styles.redText}>
-            {ScreenString.respectPolicy}
-            </Text>
+            <Text style={styles.redText}>{ScreenString.respectPolicy}</Text>
           </View>
           <View style={styles.buttonsContainer}>
             <TouchableOpacity
@@ -43,7 +46,11 @@ const TermsModal: FC<Props> = ({
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.buttonFillBlue}
-              onPress={() => toggleStatus(operation)}>
+              onPress={
+                !toggle
+                  ? () => toggleCallVisibility('true')
+                  : () => toggleCallVisibility('false')
+              }>
               <Text style={styles.centerText}>{ScreenString.proceed}</Text>
             </TouchableOpacity>
           </View>

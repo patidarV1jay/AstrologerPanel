@@ -1,6 +1,7 @@
 import { VideoCamera } from 'phosphor-react-native';
 import React from 'react';
 import {
+  ActivityIndicator,
   Image,
   Pressable,
   ScrollView,
@@ -24,6 +25,14 @@ const HomePage = () => {
     isModalVisible,
     toggleVisibility,
     operation,
+    goLive,
+    toggleCallAvaibility,
+    toggle,
+    callAvaibility,
+    isLoading,
+    error,
+    isError,
+    liveStreamLoader,
   } = useHomePage();
 
   return (
@@ -43,17 +52,29 @@ const HomePage = () => {
             </Text>
             <Pressable
               onPress={
-                !slider.call
-                  ? () => toggleVisibility('call')
-                  : () => setSlider({ ...slider, call: false })
+                !toggle
+                  ? () => setIsModalVisible(true)
+                  : () => toggleCallAvaibility('false')
               }>
-              <View
-                style={slider.call ? styles.buttonFillOrange : styles.button}>
+              {isLoading ? (
+                <View style={{ alignItems: 'center' }}>
+                  <ActivityIndicator />
+                </View>
+              ) : (
                 <View
                   style={
-                    slider.call ? styles.circleFill : styles.circle
-                  }></View>
-              </View>
+                    !isError && toggle && callAvaibility?.status
+                      ? styles.buttonFillOrange
+                      : styles.button
+                  }>
+                  <View
+                    style={
+                      !isError && toggle && callAvaibility?.status
+                        ? styles.circleFill
+                        : styles.circle
+                    }></View>
+                </View>
+              )}
             </Pressable>
           </View>
           <View style={styles.statusContent}>
@@ -129,19 +150,28 @@ const HomePage = () => {
           </TouchableOpacity>
         </View>
       </ScrollView>
-      <TouchableOpacity style={styles.footer}>
-        <VideoCamera
-          size={moderateScale(28)}
-          color={Colors.light}
-          weight="bold"
-        />
-        <Text style={styles.goLiveText}>{ScreenString.goLive}</Text>
-      </TouchableOpacity>
+      {liveStreamLoader ? (
+        <View style={styles.footer}>
+          <ActivityIndicator />
+        </View>
+      ) : (
+        <TouchableOpacity style={styles.footer} onPress={() => goLive('true')}>
+          <VideoCamera
+            size={moderateScale(28)}
+            color={Colors.light}
+            weight="bold"
+          />
+
+          <Text style={styles.goLiveText}>{ScreenString.goLive}</Text>
+        </TouchableOpacity>
+      )}
       <TermsModal
         isModalVisible={isModalVisible}
         setIsModalVisible={setIsModalVisible}
         operation={operation}
         toggleStatus={toggleStatus}
+        toggle={toggle}
+        toggleCallVisibility={toggleCallAvaibility}
       />
     </View>
   );

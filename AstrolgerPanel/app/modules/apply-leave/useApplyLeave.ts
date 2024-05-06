@@ -12,7 +12,7 @@ const useApplyLeave = () => {
   const [leaveReason, setLeaveReason] = useState<string>('');
   const timeDifference = toDate.getTime() - fromDate.getTime();
   const daysDifference = timeDifference / (1000 * 60 * 60 * 24);
-  const numberOfDays = Math.floor(daysDifference);
+  const numberOfDays = Math.floor(daysDifference)+1;
 
   const onChange = (
     event: DateTimePickerEvent,

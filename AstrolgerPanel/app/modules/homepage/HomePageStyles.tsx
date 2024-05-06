@@ -147,6 +147,7 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(16),
     marginBottom: verticleScale(15),
     fontWeight: '400',
+    textAlign: 'center',
   },
   bottomSpace: {
     marginBottom: verticleScale(20),
