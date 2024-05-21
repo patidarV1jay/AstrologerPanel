@@ -12,6 +12,8 @@ import {
   MyPerformace,
   MyPaymentReport,
   SupportScreen,
+  HostPage,
+  SingleChat,
 } from '../modules';
 
 const StackHome = createNativeStackNavigator();
@@ -24,6 +26,19 @@ const HomeStack = () => {
         name={Routes.HomeScreen}
         component={HomePage}
         options={{ header: () => <HomeHeader /> }}
+      />
+      <StackHome.Screen
+        name={Routes.ChatScreen}
+        component={SingleChat}
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <StackHome.Screen
+        name={Routes.HostScreen}
+        component={HostPage}
+        options={{ headerShown: false }}
       />
       <StackHome.Screen
         name={Routes.UpdateProfile}

@@ -1,7 +1,8 @@
-import { Text, TextInput, View } from 'react-native';
+import { Pressable, Text, TextInput, View } from 'react-native';
 import { Colors, moderateScale } from '../../themes';
 import styles from './CustomTextInputStyles';
 import { Props } from './types';
+import { Eye } from 'phosphor-react-native';
 
 const CustomTextInput = ({
   placeholder,

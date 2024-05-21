@@ -1,19 +1,13 @@
 import { ParamListBase, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Alert, Linking, ToastAndroid } from 'react-native';
-import {
-  check,
-  PERMISSIONS,
-  requestMultiple,
-  RESULTS,
-} from 'react-native-permissions';
+import { PERMISSIONS, requestMultiple } from 'react-native-permissions';
 import { Routes, ScreenString } from '../../constants';
 import {
   fetchCallAvaibility,
   useAppDispatch,
   useAppSelector,
-  liveStream,
 } from '../../redux';
 import { resetAvailableError } from '../../redux';
 
@@ -31,26 +25,22 @@ type permissions = (
 )[];
 
 const useHomePage = () => {
-  const [slider, setSlider] = useState<Status>({
-    chat: false,
-    call: false,
-    videoChat: false,
-    freeChat: false,
-  });
   const [toggle, setToggle] = useState<boolean>(false);
+  const [input, setInput] = useState<string>('');
+  const [chat, setChat] = useState(false);
+  const [videoCall, setVideoCall] = useState(false);
+  const [freeCall, setFreeCall] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
-  const [operation, setOperation] = useState<string>('');
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const dispatch = useAppDispatch();
   const { loggedInUser } = useAppSelector(state => state.signin);
-  const { id } = loggedInUser;
+  const { id, slug, name } = loggedInUser;
   const { callAvaibility, isLoading, error, isError } = useAppSelector(
     state => state.availableForCallReducer,
   );
-  const { isloading: liveStreamLoader, isSuccess } = useAppSelector(
+  const { isloading: liveStreamLoader, isChat } = useAppSelector(
     state => state.LiveStreamReducer,
   );
-
   if (error !== '') {
     Alert.alert(ScreenString.permissionRequired, ScreenString.settingPath, [
       {
@@ -59,6 +49,14 @@ const useHomePage = () => {
       },
     ]);
   }
+
+  const onJoinPress = (isHost: boolean) => {
+    navigation.navigate(isHost ? Routes.HostScreen : 'Audience', {
+      userID: id,
+      userName: name,
+      liveID: slug,
+    });
+  };
 
   const requestPermissions = async (permissions: permissions) => {
     const status = await requestMultiple(permissions);
@@ -89,63 +87,64 @@ const useHomePage = () => {
     ]);
   }, []);
 
-  const toggleStatus = (operation: string) => {
-    operation === 'chat' && setSlider({ ...slider, chat: !slider.chat });
-    operation === 'call' && setSlider({ ...slider, call: !slider.call });
-    operation === 'videoChat' &&
-      setSlider({ ...slider, videoChat: !slider.videoChat });
-    operation === 'freeChat' &&
-      setSlider({ ...slider, freeChat: !slider.freeChat });
-    setIsModalVisible(false);
-  };
-
-  const toggleVisibility = (operation: string) => {
-    setIsModalVisible(true);
-    setOperation(operation);
-  };
-
-  const navigateToEarningDetails = () => {
-    navigation.navigate(Routes.EarningDetails);
-  };
-
-  const goLive = async (status: string) => {
-    try {
-      const result = await check(PERMISSIONS.ANDROID.CAMERA);
-      if (result === RESULTS.GRANTED) {
-        return dispatch(
-          liveStream({
-            astro_id: id,
-            status,
-          }),
-        );
-      }
-      ToastAndroid.show(ScreenString.permissionRequired, ToastAndroid.SHORT);
-    } catch (error) {}
-  };
-
   const toggleCallAvaibility = (call: string) => {
     !isError && setToggle(!toggle);
     setIsModalVisible(false);
     dispatch(fetchCallAvaibility({ id, call }));
   };
+  const handleFeedback = (text: string) => {
+    setInput(text);
+  };
+
+  const handleSend = () => {
+    if (input.trim() !== '') {
+      setInput('');
+      return ToastAndroid.show('Thanks For Your Feedback', ToastAndroid.SHORT);
+    }
+    return ToastAndroid.show('Please Enter Your Feedback', ToastAndroid.SHORT);
+  };
+
+  // useEffect(() => {
+  //   database()
+  //     .ref('/chatList')
+  //     .once('value')
+  //     .then(snapshot => {
+  //       console.log('User data: ', snapshot.val());
+  //     });
+  //   let tempData = [];
+  //   firestore()
+  //     .collection('users')
+  //     .where('mobile', '!=', '9799104489')
+  //     .get()
+  //     .then(res => {
+  //       console.log(JSON.stringify(res.docs[0].data()));
+  //       res.docs.map(item => {
+  //         tempData.push(item.data());
+  //       });
+  //       console.log(tempData, 'tem');
+  //     });
+  // }, []);
 
   return {
-    slider,
-    setSlider,
-    toggleStatus,
-    isModalVisible,
     setIsModalVisible,
-    toggleVisibility,
-    operation,
-    navigateToEarningDetails,
-    goLive,
+    isModalVisible,
     toggleCallAvaibility,
     toggle,
     callAvaibility,
     isLoading,
-    error,
     isError,
     liveStreamLoader,
+    onJoinPress,
+    handleFeedback,
+    handleSend,
+    input,
+    chat,
+    setChat,
+    videoCall,
+    setVideoCall,
+    freeCall,
+    setFreeCall,
+    isChat,
   };
 };
 

@@ -1,4 +1,4 @@
-import { At, Password } from 'phosphor-react-native';
+import { At, Eye, Password } from 'phosphor-react-native';
 import React from 'react';
 import {
   ActivityIndicator,
@@ -34,16 +34,18 @@ const SigninScreen = () => {
           returnKeyType="next"
           onSubmitEditing={() => focusNextTextInput(refInput1)}
         />
+
         <CustomTextInput
           inputRef={refInput1}
           placeholder="Password"
           formik={formik}
           name="password"
           Icon={Password}
-          secureTextEntry={false}
+          secureTextEntry={true}
           returnKeyType="done"
           onSubmitEditing={() => Keyboard.dismiss}
         />
+
         <Text style={styles.alignRightText}>{ScreenString.forgotPassword}</Text>
         <TouchableOpacity
           style={styles.blueButton}

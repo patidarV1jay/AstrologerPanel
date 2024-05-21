@@ -5,6 +5,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 import { signinReducer } from './signin';
 import { signupReducer } from './signup';
 import { availableForCallReducer, LiveStreamReducer } from './available';
+import { ChatStatusReducer } from './chat-status';
 
 const persistConfig = {
   key: 'root',
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   signin: signinReducer,
   signup: signupReducer,
   availableForCallReducer,
-  LiveStreamReducer
+  LiveStreamReducer,
+  ChatStatusReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

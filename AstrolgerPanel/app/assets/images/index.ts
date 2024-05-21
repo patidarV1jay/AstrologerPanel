@@ -1,7 +1,7 @@
 export default {
   lekhaJhoka: require('./LekhaJhoka.jpg'),
   avatar: require('./avatar.png'),
-  banner: require('./banne.jpg'),
+  banner: require('./two.png'),
   call: require('./calldetails.png'),
   setRate: require('./setRate.png'),
   applyLeave: require('./applyLeave.png'),
@@ -13,4 +13,5 @@ export default {
   shortcut: require('./shortcuts.png'),
   support: require('./support.png'),
   myPerformance: require('./myPerformance.png'),
+  bgImage: require('./astroBg.jpg'),
 };

@@ -44,7 +44,6 @@ const registerUser = createAsyncThunk(
         system_known: selectedDevices,
         language_known: languageSelected,
       });
-      console.log(response.data);
       return response.data;
     } catch (error) {
       throw new Error('Request Failed, Try Again');

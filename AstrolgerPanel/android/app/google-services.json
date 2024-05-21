@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "233471242245",
+    "firebase_url": "https://lekhajhokhha-default-rtdb.firebaseio.com",
+    "project_id": "lekhajhokhha",
+    "storage_bucket": "lekhajhokhha.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:233471242245:android:21b6599cc8b3c37d366c6c",
+        "android_client_info": {
+          "package_name": "com.astrolgerpanel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7p4SlNtMBFWOJGxGemJu6KWlQpJylG44"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:233471242245:android:7f566010d48da53a366c6c",
+        "android_client_info": {
+          "package_name": "com.lekhajhoka"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7p4SlNtMBFWOJGxGemJu6KWlQpJylG44"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
