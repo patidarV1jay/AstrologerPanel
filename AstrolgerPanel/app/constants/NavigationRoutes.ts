@@ -13,4 +13,6 @@ export enum Routes {
   Leave = 'Apply Leave',
   EarningDetails = 'Earning Details',
   Support = 'Support',
+  HostScreen = 'HostScreen',
+  ChatScreen = "ChatScreen"
 }

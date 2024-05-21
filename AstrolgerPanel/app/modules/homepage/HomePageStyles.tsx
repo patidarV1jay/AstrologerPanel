@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   },
   banner: {
     width: '100%',
-    height: verticleScale(135),
+    height: verticleScale(170),
     borderRadius: moderateScale(10),
   },
   imageView: {
@@ -249,6 +249,70 @@ const styles = StyleSheet.create({
     borderRadius: moderateScale(10),
     padding: moderateScale(10),
     marginVertical: verticleScale(30),
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+  },
+  card: {
+    elevation: 2,
+    width: '40%',
+    alignItems: 'center',
+    backgroundColor: Colors.light,
+    padding: moderateScale(10),
+    marginVertical: verticleScale(20),
+    borderRadius: moderateScale(5),
+  },
+  number: {
+    color: Colors.dark,
+    fontWeight: '500',
+    fontSize: moderateScale(16),
+  },
+  numberText: {
+    color: Colors.gray,
+  },
+  feedbackContainer: {
+    backgroundColor: Colors.fadeWhite,
+    marginTop: verticleScale(35),
+    borderRadius: moderateScale(5),
+    elevation: 1,
+    paddingVertical: verticleScale(20),
+    paddingHorizontal: horizontalScale(5),
+    marginBottom: verticleScale(110),
+    marginHorizontal: horizontalScale(4),
+  },
+  feedbackInput: {
+    backgroundColor: Colors.light,
+    borderRadius: moderateScale(5),
+    marginTop: verticleScale(10),
+    height: verticleScale(250),
+    color: Colors.dark,
+    padding: moderateScale(4),
+  },
+  feedbackHeader: {
+    color: Colors.dark,
+    fontSize: moderateScale(15),
+    fontWeight: '500',
+  },
+  feedbackSubHeader: {
+    color: Colors.gray,
+    fontSize: moderateScale(13),
+    fontWeight: '500',
+  },
+  sendButton: {
+    backgroundColor: Colors.fadeOrange,
+    borderRadius: moderateScale(5),
+    marginTop: verticleScale(20),
+    padding: moderateScale(7),
+    width: '40%',
+    alignSelf: 'center',
+    alignItems: 'center',
+  },
+  sendText: {
+    color: Colors.light,
+    fontWeight: '500',
+    fontSize: moderateScale(15),
   },
 });
 

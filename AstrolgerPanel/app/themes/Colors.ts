@@ -15,5 +15,9 @@ export default {
   orange: '#FFA500',
   darkBlue: '#11235A',
   navyblue: '#365486',
-  statusColor: "#80808080"
+  statusColor: '#80808080',
+  fadeOrange: '#FFA50090',
+  yellow: '#ffd815',
+  fadeWhite: '#F2EFEE',
+  theme: '#27AE60',
 };

@@ -8,20 +8,15 @@ import { FlatList } from 'react-native-gesture-handler';
 interface Props {
   isModalVisible: boolean;
   setIsModalVisible: Dispatch<SetStateAction<boolean>>;
-  operation: string;
-  toggleStatus: (operation: string) => void;
   toggle: boolean;
   toggleCallVisibility: (args: string) => void;
 }
 const TermsModal: FC<Props> = ({
   isModalVisible,
   setIsModalVisible,
-  operation,
-  toggleStatus,
   toggle,
   toggleCallVisibility,
 }) => {
-  console.log(toggle)
   return (
     <Modal visible={isModalVisible} transparent={true} animationType="fade">
       <StatusBar backgroundColor={Colors.statusColor} />

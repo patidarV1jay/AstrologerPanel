@@ -7,18 +7,30 @@ interface InitialStateType {
     [key: string]: string;
   };
   isSuccess: boolean;
+  isChat: boolean;
+  notification: { [key: string]: string };
 }
 
 const initialState: InitialStateType = {
   isloading: false,
   liveDetails: {},
   isSuccess: false,
+  isChat: false,
+  notification: {},
 };
 
 const LiveStreamSlice = createSlice({
   name: 'LiveStream',
   initialState,
-  reducers: {},
+  reducers: {
+    chatModalReducer: (state, action) => {
+      state.isChat = action.payload;
+    },
+    notificatonReducer: (state, action) => {
+      state.notification = action.payload;
+      
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(liveStream.pending, state => {
@@ -37,4 +49,5 @@ const LiveStreamSlice = createSlice({
   },
 });
 
+export const { chatModalReducer, notificatonReducer } = LiveStreamSlice.actions;
 export default LiveStreamSlice.reducer;

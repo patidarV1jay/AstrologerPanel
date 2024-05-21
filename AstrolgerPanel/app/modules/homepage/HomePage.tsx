@@ -6,6 +6,7 @@ import {
   Pressable,
   ScrollView,
   Text,
+  TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -15,26 +16,30 @@ import { Colors, moderateScale, verticleScale } from '../../themes';
 import styles from './HomePageStyles';
 import TermsModal from './TermsModal';
 import useHomePage from './useHomePage';
+import { ChatRequest } from '../../components';
 
 const HomePage = () => {
   const {
-    slider,
-    setSlider,
-    toggleStatus,
     setIsModalVisible,
     isModalVisible,
-    toggleVisibility,
-    operation,
-    goLive,
     toggleCallAvaibility,
     toggle,
     callAvaibility,
     isLoading,
-    error,
     isError,
     liveStreamLoader,
+    onJoinPress,
+    handleSend,
+    handleFeedback,
+    input,
+    chat,
+    setChat,
+    videoCall,
+    setVideoCall,
+    freeCall,
+    setFreeCall,
+    isChat,
   } = useHomePage();
-
   return (
     <View style={styles.container}>
       <View style={styles.orangeContainer} />
@@ -45,11 +50,27 @@ const HomePage = () => {
         <View style={styles.imageView}>
           <Image style={styles.banner} source={Images.banner} />
         </View>
+        <View style={styles.row}>
+          <View style={styles.card}>
+            <Text style={styles.number}>150</Text>
+            <Text style={styles.numberText}>Total Calls Today</Text>
+          </View>
+          <View style={styles.card}>
+            <Text style={styles.number}>56</Text>
+            <Text style={styles.numberText}>Total Chats Today</Text>
+          </View>
+        </View>
         <View style={styles.statusContainer}>
           <View style={styles.statusContent}>
-            <Text style={styles.availabilityStatusText}>
-              {ScreenString.unavailable} {ScreenString.call}
-            </Text>
+            {!isError && toggle && callAvaibility?.status ? (
+              <Text style={styles.availabilityStatusText}>
+                Available For Call
+              </Text>
+            ) : (
+              <Text style={styles.availabilityStatusText}>
+                {ScreenString.unavailable} {ScreenString.call}
+              </Text>
+            )}
             <Pressable
               onPress={
                 !toggle
@@ -78,64 +99,83 @@ const HomePage = () => {
             </Pressable>
           </View>
           <View style={styles.statusContent}>
-            <Text style={styles.availabilityStatusText}>
-              {ScreenString.unavailable} {ScreenString.chat}
-            </Text>
+            {chat ? (
+              <Text style={styles.availabilityStatusText}>
+                Available For Chat
+              </Text>
+            ) : (
+              <Text style={styles.availabilityStatusText}>
+                {ScreenString.unavailable} Chat
+              </Text>
+            )}
             <Pressable
               onPress={
-                slider.chat
-                  ? () => setSlider({ ...slider, chat: false })
-                  : () => toggleVisibility('chat')
+                // !toggle
+                //   ? () => setIsModalVisible(true)
+                //   : () => toggleCallAvaibility('false')
+                () => setChat(!chat)
               }>
-              <View
-                style={slider.chat ? styles.buttonFillOrange : styles.button}>
-                <View
-                  style={
-                    slider.chat ? styles.circleFill : styles.circle
-                  }></View>
+              <View style={chat ? styles.buttonFillOrange : styles.button}>
+                <View style={chat ? styles.circleFill : styles.circle}></View>
               </View>
             </Pressable>
           </View>
           <View style={styles.statusContent}>
-            <Text style={styles.availabilityStatusText}>
-              {ScreenString.unavailable} {ScreenString.videoCall}
-            </Text>
+            {videoCall ? (
+              <Text style={styles.availabilityStatusText}>
+                Available For Video Call
+              </Text>
+            ) : (
+              <Text style={styles.availabilityStatusText}>
+                {ScreenString.unavailable} Video Call
+              </Text>
+            )}
             <Pressable
               onPress={
-                slider.videoChat
-                  ? () => setSlider({ ...slider, videoChat: false })
-                  : () => toggleVisibility('videoChat')
+                // !toggle
+                //   ? () => setIsModalVisible(true)
+                //   : () => toggleCallAvaibility('false')
+                () => setVideoCall(!videoCall)
               }>
-              <View
-                style={
-                  slider.videoChat ? styles.buttonFillOrange : styles.button
-                }>
+              {/* {isLoading ? (
+                <View style={{ alignItems: 'center' }}>
+                  <ActivityIndicator />
+                </View>
+              ) : ( */}
+              <View style={videoCall ? styles.buttonFillOrange : styles.button}>
                 <View
-                  style={
-                    slider.videoChat ? styles.circleFill : styles.circle
-                  }></View>
+                  style={videoCall ? styles.circleFill : styles.circle}></View>
               </View>
+              {/* )} */}
             </Pressable>
           </View>
-          <View style={[styles.statusContent, styles.bottomSpace]}>
-            <Text style={styles.availabilityStatusText}>
-              {ScreenString.unlimited}
-            </Text>
+          <View style={styles.statusContent}>
+            {freeCall ? (
+              <Text style={styles.availabilityStatusText}>
+                Available For Free Call
+              </Text>
+            ) : (
+              <Text style={styles.availabilityStatusText}>
+                Unlimited Free Call And Chat
+              </Text>
+            )}
             <Pressable
               onPress={
-                slider.freeChat
-                  ? () => setSlider({ ...slider, freeChat: false })
-                  : () => toggleVisibility('freeChat')
+                // !toggle
+                //   ? () => setIsModalVisible(true)
+                //   : () => toggleCallAvaibility('false')
+                () => setFreeCall(!freeCall)
               }>
-              <View
-                style={
-                  slider.freeChat ? styles.buttonFillOrange : styles.button
-                }>
+              {/* {isLoading ? (
+                <View style={{ alignItems: 'center' }}>
+                  <ActivityIndicator />
+                </View>
+              ) : ( */}
+              <View style={freeCall ? styles.buttonFillOrange : styles.button}>
                 <View
-                  style={
-                    slider.freeChat ? styles.circleFill : styles.circle
-                  }></View>
+                  style={freeCall ? styles.circleFill : styles.circle}></View>
               </View>
+              {/* )} */}
             </Pressable>
           </View>
         </View>
@@ -149,13 +189,34 @@ const HomePage = () => {
             </Text>
           </TouchableOpacity>
         </View>
+        <View style={styles.feedbackContainer}>
+          <Text style={styles.feedbackHeader}>Talk To The Director</Text>
+          <Text style={styles.feedbackSubHeader}>
+            Help Us to Improve By Your Valuable Feedback
+          </Text>
+          <TextInput
+            placeholder="Your Feedback"
+            placeholderTextColor={Colors.gray}
+            style={styles.feedbackInput}
+            multiline={true}
+            textAlignVertical="top"
+            value={input}
+            onChangeText={handleFeedback}
+            onSubmitEditing={handleSend}
+          />
+          <TouchableOpacity style={styles.sendButton} onPress={handleSend}>
+            <Text style={styles.sendText}>Send</Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
       {liveStreamLoader ? (
         <View style={styles.footer}>
           <ActivityIndicator />
         </View>
       ) : (
-        <TouchableOpacity style={styles.footer} onPress={() => goLive('true')}>
+        <TouchableOpacity
+          style={styles.footer}
+          onPress={() => onJoinPress(true)}>
           <VideoCamera
             size={moderateScale(28)}
             color={Colors.light}
@@ -165,14 +226,14 @@ const HomePage = () => {
           <Text style={styles.goLiveText}>{ScreenString.goLive}</Text>
         </TouchableOpacity>
       )}
+
       <TermsModal
         isModalVisible={isModalVisible}
         setIsModalVisible={setIsModalVisible}
-        operation={operation}
-        toggleStatus={toggleStatus}
         toggle={toggle}
         toggleCallVisibility={toggleCallAvaibility}
       />
+      <ChatRequest />
     </View>
   );
 };
