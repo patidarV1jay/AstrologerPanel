@@ -1,6 +1,13 @@
+import { useFormik } from 'formik';
 import { useEffect, useState } from 'react';
 import { RateSchmea } from '../../constants';
-import { useFormik } from 'formik';
+import {
+  resetSuccess,
+  setcallCharges,
+  useAppDispatch,
+  useAppSelector,
+} from '../../redux';
+import { ToastAndroid } from 'react-native';
 
 const useRate = () => {
   const [isRateDropDown, setIsRateDropDown] = useState<string>('');
@@ -9,21 +16,50 @@ const useRate = () => {
     useState<boolean>(false);
   const [isLiveVideoDropDown, setIsLiveVideoDropDown] =
     useState<boolean>(false);
-  const [value, setValue] = useState<number>(0);
+  const dispatch = useAppDispatch();
+  const { loggedInUser } = useAppSelector(state => state.signin);
+  const { callCharges, isSuccess } = useAppSelector(
+    state => state.SetCallChargesReducer,
+  );
+
+  useEffect(() => {
+    if (isSuccess) {
+      ToastAndroid.show('Price has been updated', ToastAndroid.SHORT);
+      dispatch(resetSuccess());
+    }
+  }, [isSuccess]);
 
   const formikForPrivateChat = useFormik({
     initialValues: {
-      rate: 0,
-      discount: 0,
+      rate: '',
+      discount: '',
     },
     validationSchema: RateSchmea,
-    onSubmit: () => {},
+    onSubmit: values => {
+      const { rate, discount } = values;
+      const discountedPrice =
+        Number(rate) - (Number(rate) * Number(discount)) / 100;
+      if (discountedPrice === 0) {
+        return ToastAndroid.show(
+          'Discounted Price should be greater than zero',
+          ToastAndroid.SHORT,
+        );
+      }
+      dispatch(
+        setcallCharges({
+          astro_id: loggedInUser?.id,
+          call_price: discountedPrice,
+          rate,
+          discount,
+        }),
+      );
+    },
   });
 
   const formikForLiveAudio = useFormik({
     initialValues: {
-      rate: 0,
-      discount: 0,
+      rate: '',
+      discount: '',
     },
     validationSchema: RateSchmea,
     onSubmit: () => {},
@@ -31,12 +67,20 @@ const useRate = () => {
 
   const formikForLiveVideo = useFormik({
     initialValues: {
-      rate: 0,
-      discount: 0,
+      rate: '',
+      discount: '',
     },
     validationSchema: RateSchmea,
     onSubmit: () => {},
   });
+
+  useEffect(() => {
+    formikForPrivateChat.setValues({
+      rate: callCharges?.rate,
+      discount: callCharges?.discount,
+    });
+  }, []);
+
   const toggleDropDown = (name: string) => {
     switch (name) {
       case 'Private Call':
@@ -72,7 +116,6 @@ const useRate = () => {
     isLiveVideoDropDown,
     isLiveAudioDropDown,
     formikForPrivateChat,
-    value,
     formikForLiveAudio,
     formikForLiveVideo,
   };

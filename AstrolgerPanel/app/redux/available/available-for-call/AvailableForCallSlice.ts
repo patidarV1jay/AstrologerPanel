@@ -1,5 +1,5 @@
 import { Draft, PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { fetchCallAvaibility } from '.';
+import fetchCallAvaibility from './AvailableForCallService';
 
 interface LiveAvaibilityType {
   [key: string]: string;
@@ -10,6 +10,7 @@ interface InitialStateType {
   isLoading: boolean;
   error: string;
   isError: boolean;
+  toggle: boolean;
 }
 
 const initialState: InitialStateType = {
@@ -17,6 +18,7 @@ const initialState: InitialStateType = {
   isLoading: false,
   error: '',
   isError: false,
+  toggle: false,
 };
 
 const AvailableForCallSlice = createSlice({
@@ -25,6 +27,9 @@ const AvailableForCallSlice = createSlice({
   reducers: {
     resetAvailableError: state => {
       state.error = '';
+    },
+    toggleReducer: state => {
+      state.toggle = !state.toggle;
     },
   },
   extraReducers: builder => {
@@ -51,5 +56,6 @@ const AvailableForCallSlice = createSlice({
   },
 });
 
-export const { resetAvailableError } = AvailableForCallSlice.actions;
+export const { resetAvailableError, toggleReducer } =
+  AvailableForCallSlice.actions;
 export default AvailableForCallSlice.reducer;

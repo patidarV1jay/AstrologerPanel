@@ -28,7 +28,6 @@ export default function HostPage() {
         config={{
           ...HOST_DEFAULT_CONFIG,
           onStartLiveButtonPressed: () => {
-            // console.log('########HostPage onStartLiveButtonPressed');
             dispatch(goLiveCall({ userID, liveID }));
           },
           onLiveStreamingEnded: () => {
@@ -37,7 +36,6 @@ export default function HostPage() {
           },
           onLeaveLiveStreaming: () => {
             console.log('########HostPage onLeaveLiveStreaming');
-            // dispatch(stopLiveStreamCall({userID, liveID}))
             navigation.navigate(Routes.HomeScreen);
           },
           durationConfig: {

@@ -5,7 +5,7 @@ import {
   TextIndent,
 } from 'phosphor-react-native';
 import React from 'react';
-import { KeyboardAvoidingView, Pressable, Text, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { Colors, moderateScale } from '../../themes';
 import styles from './ApplyLeaveStyles';
 import useApplyLeave from './useApplyLeave';

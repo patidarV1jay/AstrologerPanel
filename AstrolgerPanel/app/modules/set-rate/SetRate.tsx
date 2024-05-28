@@ -15,7 +15,6 @@ const SetRate = () => {
     formikForLiveAudio,
     formikForPrivateChat,
     formikForLiveVideo,
-    value,
   } = useRate();
 
   return (

@@ -8,14 +8,17 @@ import { FlatList } from 'react-native-gesture-handler';
 interface Props {
   isModalVisible: boolean;
   setIsModalVisible: Dispatch<SetStateAction<boolean>>;
-  toggle: boolean;
   toggleCallVisibility: (args: string) => void;
+  setfeature: Dispatch<SetStateAction<string>>;
+  feature: string;
+  toggleChatAvaibility: (args: string) => void;
 }
 const TermsModal: FC<Props> = ({
   isModalVisible,
   setIsModalVisible,
-  toggle,
   toggleCallVisibility,
+  feature,
+  toggleChatAvaibility,
 }) => {
   return (
     <Modal visible={isModalVisible} transparent={true} animationType="fade">
@@ -41,11 +44,10 @@ const TermsModal: FC<Props> = ({
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.buttonFillBlue}
-              onPress={
-                !toggle
-                  ? () => toggleCallVisibility('true')
-                  : () => toggleCallVisibility('false')
-              }>
+              onPress={() => {
+                feature === 'call' && toggleCallVisibility('true');
+                feature === 'chat' && toggleChatAvaibility('true');
+              }}>
               <Text style={styles.centerText}>{ScreenString.proceed}</Text>
             </TouchableOpacity>
           </View>

@@ -1,7 +1,7 @@
 export interface FormikProps {
   handleBlur: Function;
   handleChange: Function;
-  values: { [key: string]: number };
+  values: { [key: string]: string };
   touched: { [key: string]: boolean };
   errors: { [key: string]: string };
   handleSubmit: Function;

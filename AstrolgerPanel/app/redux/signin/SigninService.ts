@@ -14,14 +14,12 @@ const authUser = createAsyncThunk(
   'Signin',
   async ({ username, password }: Payload, { rejectWithValue }) => {
     const fcm_token = await AsyncStorage.getItem('fcmToken');
-    console.log(typeof fcm_token,'token')
     try {
       const response = await axiosInstance.post('login', {
         username,
         password,
         fcm_token,
       });
-      console.log(response.data.data)
       return response?.data.data;
     } catch (error) {
       throw new Error('Invalid Credentials.');

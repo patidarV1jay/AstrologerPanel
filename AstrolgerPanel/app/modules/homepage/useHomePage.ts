@@ -6,17 +6,14 @@ import { PERMISSIONS, requestMultiple } from 'react-native-permissions';
 import { Routes, ScreenString } from '../../constants';
 import {
   fetchCallAvaibility,
+  fetchChatAvailability,
+  getEarnings,
+  resetAvailableError,
+  toggleChatReducer,
+  toggleReducer,
   useAppDispatch,
   useAppSelector,
 } from '../../redux';
-import { resetAvailableError } from '../../redux';
-
-interface Status {
-  chat: boolean;
-  call: boolean;
-  videoChat: boolean;
-  freeChat: boolean;
-}
 
 type permissions = (
   | 'android.permission.CALL_PHONE'
@@ -25,24 +22,29 @@ type permissions = (
 )[];
 
 const useHomePage = () => {
-  const [toggle, setToggle] = useState<boolean>(false);
   const [input, setInput] = useState<string>('');
-  const [chat, setChat] = useState(false);
-  const [videoCall, setVideoCall] = useState(false);
-  const [freeCall, setFreeCall] = useState(false);
+  const [chat, setChat] = useState<boolean>(false);
+  const [feature, setfeature] = useState<string>('');
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const dispatch = useAppDispatch();
   const { loggedInUser } = useAppSelector(state => state.signin);
-  const { id, slug, name } = loggedInUser;
-  const { callAvaibility, isLoading, error, isError } = useAppSelector(
+  const { id, slug, name, experience } = loggedInUser;
+  const { callAvaibility, isLoading, error, isError, toggle } = useAppSelector(
     state => state.availableForCallReducer,
   );
+  const {
+    chatAvaibility,
+    isLoading: chatLoader,
+    error: chatError,
+    isError: isChatError,
+    toggleChat,
+  } = useAppSelector(state => state.availableForChatReducer);
   const { isloading: liveStreamLoader, isChat } = useAppSelector(
     state => state.LiveStreamReducer,
   );
   if (error !== '') {
-    Alert.alert(ScreenString.permissionRequired, ScreenString.settingPath, [
+    Alert.alert(ScreenString.permissionRequired, error, [
       {
         text: ScreenString.ok,
         onPress: () => dispatch(resetAvailableError()),
@@ -78,6 +80,16 @@ const useHomePage = () => {
       ]);
     }
   };
+  const toggleCallAvaibility = async (call: string) => {
+    !isError && dispatch(toggleReducer());
+    setIsModalVisible(false);
+    dispatch(fetchCallAvaibility({ id, call }));
+  };
+  const toggleChatAvaibility = (chat: string) => {
+    !isError && dispatch(toggleChatReducer());
+    setIsModalVisible(false);
+    dispatch(fetchChatAvailability({ id, chat }));
+  };
 
   useEffect(() => {
     requestPermissions([
@@ -85,13 +97,8 @@ const useHomePage = () => {
       PERMISSIONS.ANDROID.RECORD_AUDIO,
       PERMISSIONS.ANDROID.CALL_PHONE,
     ]);
+    dispatch(getEarnings(id));
   }, []);
-
-  const toggleCallAvaibility = (call: string) => {
-    !isError && setToggle(!toggle);
-    setIsModalVisible(false);
-    dispatch(fetchCallAvaibility({ id, call }));
-  };
   const handleFeedback = (text: string) => {
     setInput(text);
   };
@@ -103,27 +110,6 @@ const useHomePage = () => {
     }
     return ToastAndroid.show('Please Enter Your Feedback', ToastAndroid.SHORT);
   };
-
-  // useEffect(() => {
-  //   database()
-  //     .ref('/chatList')
-  //     .once('value')
-  //     .then(snapshot => {
-  //       console.log('User data: ', snapshot.val());
-  //     });
-  //   let tempData = [];
-  //   firestore()
-  //     .collection('users')
-  //     .where('mobile', '!=', '9799104489')
-  //     .get()
-  //     .then(res => {
-  //       console.log(JSON.stringify(res.docs[0].data()));
-  //       res.docs.map(item => {
-  //         tempData.push(item.data());
-  //       });
-  //       console.log(tempData, 'tem');
-  //     });
-  // }, []);
 
   return {
     setIsModalVisible,
@@ -139,12 +125,13 @@ const useHomePage = () => {
     handleSend,
     input,
     chat,
-    setChat,
-    videoCall,
-    setVideoCall,
-    freeCall,
-    setFreeCall,
-    isChat,
+    feature,
+    setfeature,
+    toggleChatAvaibility,
+    chatAvaibility,
+    chatLoader,
+    toggleChat,
+    experience,
   };
 };
 

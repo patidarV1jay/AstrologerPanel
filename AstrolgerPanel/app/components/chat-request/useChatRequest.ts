@@ -15,28 +15,27 @@ const useChatRequest = () => {
   const { isChat } = useAppSelector(state => state.LiveStreamReducer);
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const { notification } = useAppSelector(state => state.LiveStreamReducer);
-  const { isloading, isSuccess, statusResponse } = useAppSelector(
+  const { isSuccess, statusResponse } = useAppSelector(
     state => state.ChatStatusReducer,
   );
-  console.log(notification, 'modal chat');
   const { roomId, userId } = notification;
 
   useEffect(() => {
-    isSuccess &&
-      statusResponse?.status === 'approve' &&
+    if (isSuccess && statusResponse?.status === 'approve') {
       navigation.navigate(Routes.ChatScreen, { data: notification });
+    }
     dispatch(resetChatSuccess());
     dispatch(chatModalReducer(false));
   }, [isSuccess]);
 
   const handleChatRequest = (status: string) => {
-    dispatch(postChatStatus({ status, roomId }));
+    dispatch(postChatStatus({ status, roomId , userId}));
   };
 
   return {
     isChat,
     dispatch,
-    handleChatRequest, 
+    handleChatRequest,
   };
 };
 

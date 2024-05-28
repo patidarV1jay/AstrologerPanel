@@ -14,7 +14,6 @@ const goLiveCall = createAsyncThunk(
         astrologerid: userID,
         astrologerSlug: liveID
       });
-      console.log(response.data,'response')
     } catch (error) {}
   },
 );

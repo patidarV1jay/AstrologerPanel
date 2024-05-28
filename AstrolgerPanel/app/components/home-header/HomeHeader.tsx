@@ -18,7 +18,9 @@ const HomeHeader = () => {
     setIsModalVisible,
     navigation,
     navigateToEarningDetails,
+    earnings,
   } = useHomeHeader();
+  
   return (
     <>
       <StatusBar backgroundColor={Colors.orange} barStyle="dark-content" />
@@ -51,14 +53,16 @@ const HomeHeader = () => {
         <View style={styles.lightContainer}>
           <View style={styles.incomeContainer}>
             <View>
-              <Text style={styles.amountText}>₹ 2000</Text>
+              <Text style={styles.amountText}>₹ {earnings?.todaysEarning}</Text>
               <Text style={styles.dayIncomeText}>Today's In</Text>
             </View>
             <View style={styles.vrLine} />
           </View>
           <View style={styles.incomeContainer}>
             <View>
-              <Text style={styles.amountText}>₹ 2000</Text>
+              <Text style={styles.amountText}>
+                ₹ {earnings?.remainingBalance}
+              </Text>
               <Text style={styles.dayIncomeText}>Total In</Text>
             </View>
             <View

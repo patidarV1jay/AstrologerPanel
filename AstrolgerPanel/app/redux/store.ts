@@ -4,8 +4,14 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { persistReducer, persistStore } from 'redux-persist';
 import { signinReducer } from './signin';
 import { signupReducer } from './signup';
-import { availableForCallReducer, LiveStreamReducer } from './available';
+import {
+  availableForCallReducer,
+  LiveStreamReducer,
+  availableForChatReducer,
+} from './available';
 import { ChatStatusReducer } from './chat-status';
+import { SetCallChargesReducer } from './set-charges';
+import { EarningSliceReducer } from './earnings';
 
 const persistConfig = {
   key: 'root',
@@ -17,7 +23,10 @@ const rootReducer = combineReducers({
   signup: signupReducer,
   availableForCallReducer,
   LiveStreamReducer,
-  ChatStatusReducer
+  ChatStatusReducer,
+  SetCallChargesReducer,
+  availableForChatReducer,
+  EarningSliceReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

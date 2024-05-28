@@ -33,7 +33,7 @@ const CustomDrawer = (
   const { navigation, signOut } = useCustomDrawer();
   const { loggedInUser } = useAppSelector(state => state.signin);
   const { name, email, experience } = loggedInUser;
-  console.log(loggedInUser.id)
+  
   return (
     <View style={styles.container}>
       <DrawerContentScrollView {...props}>

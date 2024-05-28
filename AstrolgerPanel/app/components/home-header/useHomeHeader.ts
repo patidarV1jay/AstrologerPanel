@@ -2,12 +2,13 @@ import { DrawerNavigationProp } from '@react-navigation/drawer';
 import { ParamListBase, useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { Routes } from '../../constants';
-import { useAppDispatch } from '../../redux';
+import { useAppDispatch, useAppSelector } from '../../redux';
 
 const useHomeHeader = () => {
   const navigation = useNavigation<DrawerNavigationProp<ParamListBase>>();
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const dispatch = useAppDispatch();
+  const { earnings } = useAppSelector(state => state.EarningSliceReducer);
 
   const navigateToUpdateProfile = () => {
     navigation.navigate(Routes.UpdateProfile);
@@ -28,6 +29,7 @@ const useHomeHeader = () => {
     navigation,
     navigateToEarningDetails,
     navigaeToSupport,
+    earnings
   };
 };
 
