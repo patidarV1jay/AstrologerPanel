@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
     color: Colors.red,
     fontSize: moderateScale(12),
   },
-
   centerText: {
     alignSelf: 'center',
     fontWeight: '500',
@@ -76,9 +75,9 @@ const styles = StyleSheet.create({
     borderRadius: moderateScale(10),
   },
   imageView: {
-    marginTop: verticleScale(4),
     marginHorizontal: horizontalScale(2),
     marginBottom: verticleScale(20),
+    marginVertical: verticleScale(5),
   },
   orangeContainer: {
     height: '15%',
@@ -131,7 +130,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.offShade,
     borderRadius: moderateScale(5),
-    paddingBottom: verticleScale(20),
+    paddingBottom: verticleScale(34),
   },
   statusContent: {
     flexDirection: 'row',
@@ -279,7 +278,6 @@ const styles = StyleSheet.create({
     elevation: 1,
     paddingVertical: verticleScale(20),
     paddingHorizontal: horizontalScale(5),
-    marginBottom: verticleScale(110),
     marginHorizontal: horizontalScale(4),
   },
   feedbackInput: {
@@ -313,6 +311,27 @@ const styles = StyleSheet.create({
     color: Colors.light,
     fontWeight: '500',
     fontSize: moderateScale(15),
+  },
+  keyboardMargin: {
+    marginBottom: verticleScale(-100),
+    borderWidth: 5,
+  },
+  footerImages: {
+    height: verticleScale(50),
+    width: horizontalScale(25),
+  },
+  iconsContainer: {
+    flexDirection: 'row',
+    marginVertical: verticleScale(30),
+    marginBottom: verticleScale(60),
+    justifyContent: 'space-around',
+  },
+  iconContainer: {
+    alignItems: 'center',
+    marginTop: verticleScale(15),
+  },
+  iconText: {
+    color: Colors.offShade,
   },
 });
 

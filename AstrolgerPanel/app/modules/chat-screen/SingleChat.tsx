@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   FlatList,
   ImageBackground,
@@ -25,33 +25,51 @@ const SingleChat = () => {
   const { astroId, data } = useChatScreen();
   const [msg, setMsg] = useState('');
   const [allChat, setallChat] = useState<{ [key: string]: string }[]>([]);
-
+  const renderOnce = useRef(false)
+  const nodeAdd = async () => {
+     database()
+      .ref(`/${data?.roomId}/`)
+      .on('child_added', snapshot => {
+         renderOnce.current &&  setallChat(state => [
+          ...state,
+          { ...snapshot.val(), key: snapshot.key },
+        ]);
+       renderOnce.current = false
+      });
+    // return () =>
+    //   database()
+    //     .ref('/messages/' + data?.roomId)
+    //     .off('child_added', onChildAdd);
+  };
   const onSend = () => {
-    let msgData = {
+    let msgData = {  
       roomID: data?.roomId,
       message: msg,
       from: astroId,
       to: data.userId,
       sendTime: moment().format(),
       msgType: 'text',
+      id: Date.now(),
     };
 
     const newReference = database().ref(`/${data?.roomId}/`).push();
-    newReference.set(msgData).then(() => setMsg(''));
+    newReference.set(msgData).then(() => {
+      setMsg('');
+      renderOnce.current = true
+      nodeAdd();
+    });
   };
 
-  useEffect(() => {
-    const onChildAdd = database()
-      .ref(`/${data?.roomId}/`)
-      .on('child_added', snapshot => {
-        setallChat(state => [...state, snapshot.val()]);
-      });
-    return () =>
-      database()
-        .ref('/messages/' + data?.roomId)
-        .off('child_added', onChildAdd);
-  }, [data?.roomId]);
-
+  const sorted = () => {
+    return allChat.sort(function (a, b) {
+      return new Date() < new Date()
+        ? -1
+        : new Date() > new Date(a.sendTime)
+        ? -1
+        : 0;
+    });
+  };
+ 
   return (
     <View style={styles.container}>
       <ChatHeader data={data} />

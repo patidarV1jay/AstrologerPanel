@@ -27,6 +27,7 @@ const ChatStatusSlice = createSlice({
         state.isloading = true;
       })
       .addCase(postChatStatus.fulfilled, (state, action) => {
+        state.statusResponse = action.payload
         state.isloading = false;
         state.isSuccess = true;
       })

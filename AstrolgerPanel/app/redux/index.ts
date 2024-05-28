@@ -10,3 +10,6 @@ export * from './available';
 export * from './go-live';
 export * from './stop-live';
 export * from './chat-status';
+export * from './close-chat';
+export * from './set-charges';
+export * from "./earnings"

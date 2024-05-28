@@ -1,4 +1,9 @@
-import { VideoCamera } from 'phosphor-react-native';
+import {
+  ChartLineUp,
+  HandCoins,
+  SealCheck,
+  VideoCamera,
+} from 'phosphor-react-native';
 import React from 'react';
 import {
   ActivityIndicator,
@@ -17,6 +22,7 @@ import styles from './HomePageStyles';
 import TermsModal from './TermsModal';
 import useHomePage from './useHomePage';
 import { ChatRequest } from '../../components';
+import { useKeyboard } from '../../hooks';
 
 const HomePage = () => {
   const {
@@ -26,20 +32,21 @@ const HomePage = () => {
     toggle,
     callAvaibility,
     isLoading,
-    isError,
     liveStreamLoader,
     onJoinPress,
     handleSend,
     handleFeedback,
     input,
-    chat,
-    setChat,
-    videoCall,
-    setVideoCall,
-    freeCall,
-    setFreeCall,
-    isChat,
+    feature,
+    setfeature,
+    toggleChatAvaibility,
+    chatAvaibility,
+    chatLoader,
+    toggleChat,
+    experience,
   } = useHomePage();
+
+  const { isKeyboardVisible } = useKeyboard();
   return (
     <View style={styles.container}>
       <View style={styles.orangeContainer} />
@@ -49,6 +56,16 @@ const HomePage = () => {
         contentContainerStyle={{ paddingBottom: verticleScale(80) }}>
         <View style={styles.imageView}>
           <Image style={styles.banner} source={Images.banner} />
+        </View>
+        <View style={styles.row}>
+          <View style={styles.card}>
+            <Text style={styles.number}>{experience}</Text>
+            <Text style={styles.numberText}>Experience</Text>
+          </View>
+          <View style={styles.card}>
+            <Text style={styles.number}>4</Text>
+            <Text style={styles.numberText}>Followers</Text>
+          </View>
         </View>
         <View style={styles.row}>
           <View style={styles.card}>
@@ -62,7 +79,7 @@ const HomePage = () => {
         </View>
         <View style={styles.statusContainer}>
           <View style={styles.statusContent}>
-            {!isError && toggle && callAvaibility?.status ? (
+            {callAvaibility?.flag === 'true' ? (
               <Text style={styles.availabilityStatusText}>
                 Available For Call
               </Text>
@@ -74,7 +91,10 @@ const HomePage = () => {
             <Pressable
               onPress={
                 !toggle
-                  ? () => setIsModalVisible(true)
+                  ? () => {
+                      setIsModalVisible(true);
+                      setfeature('call');
+                    }
                   : () => toggleCallAvaibility('false')
               }>
               {isLoading ? (
@@ -84,13 +104,13 @@ const HomePage = () => {
               ) : (
                 <View
                   style={
-                    !isError && toggle && callAvaibility?.status
+                    callAvaibility?.flag === 'true'
                       ? styles.buttonFillOrange
                       : styles.button
                   }>
                   <View
                     style={
-                      !isError && toggle && callAvaibility?.status
+                      callAvaibility?.flag === 'true'
                         ? styles.circleFill
                         : styles.circle
                     }></View>
@@ -99,7 +119,7 @@ const HomePage = () => {
             </Pressable>
           </View>
           <View style={styles.statusContent}>
-            {chat ? (
+            {chatAvaibility?.flag === 'true' ? (
               <Text style={styles.availabilityStatusText}>
                 Available For Chat
               </Text>
@@ -110,76 +130,36 @@ const HomePage = () => {
             )}
             <Pressable
               onPress={
-                // !toggle
-                //   ? () => setIsModalVisible(true)
-                //   : () => toggleCallAvaibility('false')
-                () => setChat(!chat)
+                !toggleChat
+                  ? () => {
+                      setIsModalVisible(true);
+                      setfeature('chat');
+                    }
+                  : () => toggleChatAvaibility('false')
               }>
-              <View style={chat ? styles.buttonFillOrange : styles.button}>
-                <View style={chat ? styles.circleFill : styles.circle}></View>
-              </View>
-            </Pressable>
-          </View>
-          <View style={styles.statusContent}>
-            {videoCall ? (
-              <Text style={styles.availabilityStatusText}>
-                Available For Video Call
-              </Text>
-            ) : (
-              <Text style={styles.availabilityStatusText}>
-                {ScreenString.unavailable} Video Call
-              </Text>
-            )}
-            <Pressable
-              onPress={
-                // !toggle
-                //   ? () => setIsModalVisible(true)
-                //   : () => toggleCallAvaibility('false')
-                () => setVideoCall(!videoCall)
-              }>
-              {/* {isLoading ? (
+              {chatLoader ? (
                 <View style={{ alignItems: 'center' }}>
                   <ActivityIndicator />
                 </View>
-              ) : ( */}
-              <View style={videoCall ? styles.buttonFillOrange : styles.button}>
+              ) : (
                 <View
-                  style={videoCall ? styles.circleFill : styles.circle}></View>
-              </View>
-              {/* )} */}
-            </Pressable>
-          </View>
-          <View style={styles.statusContent}>
-            {freeCall ? (
-              <Text style={styles.availabilityStatusText}>
-                Available For Free Call
-              </Text>
-            ) : (
-              <Text style={styles.availabilityStatusText}>
-                Unlimited Free Call And Chat
-              </Text>
-            )}
-            <Pressable
-              onPress={
-                // !toggle
-                //   ? () => setIsModalVisible(true)
-                //   : () => toggleCallAvaibility('false')
-                () => setFreeCall(!freeCall)
-              }>
-              {/* {isLoading ? (
-                <View style={{ alignItems: 'center' }}>
-                  <ActivityIndicator />
+                  style={
+                    chatAvaibility?.flag === 'true'
+                      ? styles.buttonFillOrange
+                      : styles.button
+                  }>
+                  <View
+                    style={
+                      chatAvaibility?.flag === 'true'
+                        ? styles.circleFill
+                        : styles.circle
+                    }></View>
                 </View>
-              ) : ( */}
-              <View style={freeCall ? styles.buttonFillOrange : styles.button}>
-                <View
-                  style={freeCall ? styles.circleFill : styles.circle}></View>
-              </View>
-              {/* )} */}
+              )}
             </Pressable>
           </View>
         </View>
-        <View style={[styles.statusContainer, styles.getDetailsContainer]}>
+        {/* <View style={[styles.statusContainer, styles.getDetailsContainer]}>
           <Text style={styles.wishToGetText}>
             {ScreenString.wishToGetBirthDetails}
           </Text>
@@ -188,7 +168,7 @@ const HomePage = () => {
               {ScreenString.getBirthDetails}
             </Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
         <View style={styles.feedbackContainer}>
           <Text style={styles.feedbackHeader}>Talk To The Director</Text>
           <Text style={styles.feedbackSubHeader}>
@@ -208,30 +188,60 @@ const HomePage = () => {
             <Text style={styles.sendText}>Send</Text>
           </TouchableOpacity>
         </View>
-      </ScrollView>
-      {liveStreamLoader ? (
-        <View style={styles.footer}>
-          <ActivityIndicator />
+        <View style={styles.iconsContainer}>
+          <View style={styles.iconContainer}>
+            <HandCoins
+              color={Colors.offShade}
+              size={moderateScale(35)}
+              weight="regular"
+            />
+            <Text style={styles.iconText}>Secure Payments</Text>
+          </View>
+          <View style={styles.iconContainer}>
+            <SealCheck
+              color={Colors.offShade}
+              size={moderateScale(35)}
+              weight="regular"
+            />
+            <Text style={styles.iconText}>Assurance</Text>
+          </View>
+          <View style={styles.iconContainer}>
+            <ChartLineUp
+              color={Colors.offShade}
+              size={moderateScale(35)}
+              weight="regular"
+            />
+            <Text style={styles.iconText}>Growth</Text>
+          </View>
         </View>
-      ) : (
-        <TouchableOpacity
-          style={styles.footer}
-          onPress={() => onJoinPress(true)}>
-          <VideoCamera
-            size={moderateScale(28)}
-            color={Colors.light}
-            weight="bold"
-          />
-
-          <Text style={styles.goLiveText}>{ScreenString.goLive}</Text>
-        </TouchableOpacity>
+      </ScrollView>
+      {!isKeyboardVisible && (
+        <>
+          {liveStreamLoader ? (
+            <View style={styles.footer}>
+              <ActivityIndicator />
+            </View>
+          ) : (
+            <TouchableOpacity
+              style={styles.footer}
+              onPress={() => onJoinPress(true)}>
+              <VideoCamera
+                size={moderateScale(28)}
+                color={Colors.light}
+                weight="bold"
+              />
+              <Text style={styles.goLiveText}>{ScreenString.goLive}</Text>
+            </TouchableOpacity>
+          )}
+        </>
       )}
-
       <TermsModal
         isModalVisible={isModalVisible}
         setIsModalVisible={setIsModalVisible}
-        toggle={toggle}
         toggleCallVisibility={toggleCallAvaibility}
+        setfeature={setfeature}
+        feature={feature}
+        toggleChatAvaibility={toggleChatAvaibility}
       />
       <ChatRequest />
     </View>

@@ -20,8 +20,8 @@ const DropDownComponent: FC<Props> = ({
   privateCallRate,
   formik,
 }) => {
-  const { handleBlur, handleChange, handleSubmit, values, errors, touched } =
-    formik;
+  const { handleBlur, handleChange, handleSubmit, values, errors } = formik;
+
   return (
     <View style={styles.marginbottom}>
       <Pressable
@@ -60,7 +60,9 @@ const DropDownComponent: FC<Props> = ({
                     style={styles.textInput}
                     onChangeText={handleChange('rate')}
                     onBlur={handleBlur('rate')}
-                    value={values.rate.toString()}
+                    value={values.rate}
+                    placeholder="Charges"
+                    placeholderTextColor={Colors.offShade}
                   />
                 </View>
                 <View style={styles.errorView}>
@@ -74,10 +76,12 @@ const DropDownComponent: FC<Props> = ({
                   <Text style={styles.rateText}>{ScreenString.discount}</Text>
                   <TextInput
                     keyboardType="number-pad"
-                    value={values.discount.toString()}
+                    value={values.discount}
                     style={styles.textInput}
                     onChangeText={handleChange('discount')}
                     onBlur={handleBlur('discount')}
+                    placeholder="Discount"
+                    placeholderTextColor={Colors.offShade}
                   />
                 </View>
                 <View style={styles.errorView}>
@@ -93,8 +97,10 @@ const DropDownComponent: FC<Props> = ({
                 </Text>
                 <View style={styles.discountedContainer}>
                   <Text style={styles.discountedPrice}>
-                    {formik.values.rate -
-                      (formik.values.rate * formik.values.discount) / 100}
+                   { `${(Number(formik.values.rate) -
+                      (Number(formik.values.rate) *
+                        Number(formik.values.discount)) /
+                        100).toFixed(2)}`}
                   </Text>
                 </View>
               </View>

@@ -34,9 +34,9 @@ const styles = StyleSheet.create({
     color: Colors.light,
   },
   rateText: {
-    fontWeight: 'bold',
+    fontWeight: '500',
     color: Colors.dark,
-    fontSize: moderateScale(16),
+    fontSize: moderateScale(15),
     marginRight: horizontalScale(20),
   },
   rateContainer: {

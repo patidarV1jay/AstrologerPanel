@@ -12,7 +12,7 @@ import TimeDelivery from './TimeDelivery';
 const MsgComponent = (props: { sender?: any; item: any }) => {
   const { sender, item } = props;
   return (
-    <Pressable style={{ marginVertical: 0 }}>
+    <Pressable style={{ marginVertical: 0}} key={item.id}>
       <View
         style={[styles.TriangleShapeCSS, sender ? styles.right : [styles.left]]}
       />

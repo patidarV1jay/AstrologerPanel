@@ -7,7 +7,7 @@ import {
 } from '../../themes';
 
 const styles = StyleSheet.create({
-  container: {flex:1},
+  container: { flex: 1 },
   avatar: {
     height: verticleScale(140),
     width: horizontalScale(60),
@@ -35,10 +35,11 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(15),
     color: Colors.dark,
     marginTop: verticleScale(10),
+    marginRight: horizontalScale(5)
   },
   spaceBetween: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     marginTop: verticleScale(10),
   },
   signOutView: {

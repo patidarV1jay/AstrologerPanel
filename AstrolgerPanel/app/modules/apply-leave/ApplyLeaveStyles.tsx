@@ -70,6 +70,8 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     borderRadius: moderateScale(5),
     color: Colors.dark,
+    height: verticleScale(400),
+    padding: moderateScale(4)
   },
   textInputView: {
     marginTop: verticleScale(50),

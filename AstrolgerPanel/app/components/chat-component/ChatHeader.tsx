@@ -6,7 +6,7 @@ import { Colors, FONTS } from '../../themes';
 
 const ChatHeader = (props: { data: any }) => {
   const { data } = props;
-  const navigation = useNavigation();
+  const navigation = useNavigation(); 
 
   return (
     <View style={styles.container}>
@@ -27,7 +27,9 @@ const ChatHeader = (props: { data: any }) => {
             fontFamily: FONTS.SemiBold,
             textTransform: 'capitalize',
           }}>
-          {data.id}
+          {/* {data.id}
+           */}
+           hey
         </Text>
       </View>
     </View>
