@@ -18,9 +18,10 @@ const setcallCharges = createAsyncThunk(
         call_price,
         astro_id,
       });
-      console.log(response)
+      console.log(response,'response from set call service')
       return { rate, discount, ...response.data };
     } catch (error) {
+        console.log(error.response.data,'hee')
        ToastAndroid.show("Error while updating, Please try again !", ToastAndroid.SHORT)
     }
   },

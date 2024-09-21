@@ -33,6 +33,7 @@ const SetCallChargeSlice = createSlice({
         state.isloading = true;
       })
       .addCase(setcallCharges.fulfilled, (state, action) => {
+        console.log('hhey setcallslice')
         state.callCharges = action.payload;
         state.isloading = false;
         state.isSuccess = true;

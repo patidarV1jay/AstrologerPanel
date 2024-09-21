@@ -21,12 +21,12 @@ const useRate = () => {
   const { callCharges, isSuccess } = useAppSelector(
     state => state.SetCallChargesReducer,
   );
-
+  console.log(isSuccess, callCharges)
   useEffect(() => {
-    if (isSuccess) {
+    if (!!callCharges) {
       ToastAndroid.show('Price has been updated', ToastAndroid.SHORT);
-      dispatch(resetSuccess());
     }
+    dispatch(resetSuccess());
   }, [isSuccess]);
 
   const formikForPrivateChat = useFormik({
